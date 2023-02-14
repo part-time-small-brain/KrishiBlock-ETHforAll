@@ -43,3 +43,31 @@ contract Land {
         string city;
     }
 }
+    uint inspectorsCount;
+    uint public userCount;
+    uint public landsCount;
+
+    mapping(address => LandInspector) public InspectorMapping;
+    mapping(uint => address[]) allLandInspectorList;
+    mapping(address => bool)  RegisteredInspectorMapping;
+    mapping(address => User) public UserMapping;
+    mapping(uint => address)  AllUsers;
+    mapping(uint => address[])  allUsersList;
+    mapping(address => bool)  RegisteredUserMapping;
+    mapping(address => uint[])  MyLands;
+    mapping(uint => Landreg) public lands;
+    mapping(uint => uint[])  allLandList;
+
+
+    function isContractOwner(address _addr) public view returns(bool){
+        if(_addr==contractOwner)
+            return true;
+        else
+            return false;
+    }
+
+    function changeContractOwner(address _addr)public {
+        require(msg.sender==contractOwner,"you are not contractOwner");
+
+        contractOwner=_addr;
+    }
