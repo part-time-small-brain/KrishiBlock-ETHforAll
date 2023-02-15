@@ -42,7 +42,7 @@ contract Land {
         string designation;
         string city;
     }
-}
+    
     uint inspectorsCount;
     uint public userCount;
     uint public landsCount;
@@ -71,3 +71,40 @@ contract Land {
 
         contractOwner=_addr;
     }
+
+    //-----------------------------------------------LandInspector-----------------------------------------------
+
+    function addLandInspector(address _addr,string memory _name, uint _age, string memory _designation,string memory _city) public returns(bool){
+        if(contractOwner!=msg.sender)
+            return false;
+        require(contractOwner==msg.sender);
+        RegisteredInspectorMapping[_addr]=true;
+        allLandInspectorList[1].push(_addr);
+        InspectorMapping[_addr] = LandInspector(inspectorsCount,_addr,_name, _age, _designation,_city);
+        return true;
+    }
+
+    function removeLandInspector(address _addr) public{
+        require(msg.sender==contractOwner,"You are not contractOwner");
+        require(RegisteredInspectorMapping[_addr],"Land Inspector not found");
+        RegisteredInspectorMapping[_addr]=false;
+        uint len=allLandInspectorList[1].length;
+        for(uint i=0;i<len;i++)
+        {
+            if(allLandInspectorList[1][i]==_addr)
+            {
+                allLandInspectorList[1][i]=allLandInspectorList[1][len-1];
+                allLandInspectorList[1].pop();
+                break;
+            }
+        }
+    }
+
+    function isLandInspector(address _id) public view returns (bool) {
+        if(RegisteredInspectorMapping[_id]){
+            return true;
+        }else{
+            return false;
+        }
+    }
+}
