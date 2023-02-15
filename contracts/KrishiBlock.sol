@@ -35,7 +35,6 @@ contract Land {
     }
 
     struct Lekhpal {
-        uint id;
         address _addr;
         string name;
         uint age;
@@ -43,21 +42,32 @@ contract Land {
         string city;
     }
 
-    uint lekhpalCount;
+    struct Tehsildar {
+        address _addr;
+        string name;
+        uint age;
+        string tehsil;
+    }
+
     uint public userCount;
     uint public landsCount;
 
     mapping(address => Lekhpal) public lekhpalMapping;
     mapping(uint => address[]) lekhpalList;
     mapping(address => bool)  registeredLekhpalMapping;
+
     mapping(address => User) public UserMapping;
     mapping(uint => address)  AllUsers;
     mapping(uint => address[])  allUsersList;
     mapping(address => bool)  RegisteredUserMapping;
+
     mapping(address => uint[])  MyLands;
     mapping(uint => Landreg) public lands;
     mapping(uint => uint[])  allLandList;
 
+    mapping(address => Tehsildar) public tehsildarMapping;
+    mapping(uint => address[]) tehsildarList;
+    mapping(address => bool)  registeredTehsildarMapping;
 
     function isSDM(address _addr) public view returns(bool){
         if(_addr==SDM)
@@ -72,15 +82,44 @@ contract Land {
         SDM=_addr;
     }
 
+    //-----------------------------------------------Tehsildar-----------------------------------------------
+
+    function addTehsildar(address _addr,string memory _name, uint _age, string memory _tehsil) public returns(bool) {
+        require(SDM==msg.sender,"function caller is not SDM");
+        registeredTehsildarMapping[_addr]=true;
+        tehsildarList[1].push(_addr);
+        tehsildarMapping[_addr] = Tehsildar(_addr,_name,_age,_tehsil);
+        return true;
+    }
+
+    function removeTehsildar(address _addr) public{
+        require(msg.sender==SDM,"You are not SDM");
+        require(registeredTehsildarMapping[_addr],"Tehsiladar not found");
+        registeredLekhpalMapping[_addr]=false;
+        uint len=tehsildarList[1].length;
+        for(uint i=0;i<len;i++)
+        {
+            if(tehsildarList[1][i]==_addr)
+            {
+                tehsildarList[1][i]=tehsildarList[1][len-1];
+                tehsildarList[1].pop();
+                break;
+            }
+        }
+    }
+
+    function isTehsildar(address _id) public view returns (bool) {
+        if(registeredTehsildarMapping[_id]) return true;
+        else return false;
+    }
+    
     //-----------------------------------------------Lekhpal-----------------------------------------------
 
     function addLekhpal(address _addr,string memory _name, uint _age, string memory _designation,string memory _city) public returns(bool){
-        if(SDM!=msg.sender)
-            return false;
-        require(SDM==msg.sender);
+        require(SDM==msg.sender,"function caller is not SDM");
         registeredLekhpalMapping[_addr]=true;
         lekhpalList[1].push(_addr);
-        lekhpalMapping[_addr] = Lekhpal(lekhpalCount,_addr,_name, _age, _designation,_city);
+        lekhpalMapping[_addr] = Lekhpal(_addr,_name, _age, _designation,_city);
         return true;
     }
 
@@ -107,8 +146,6 @@ contract Land {
             return false;
         }
     }
-
-
 
     //-----------------------------------------------User-----------------------------------------------
 
@@ -180,3 +217,9 @@ contract Land {
 //store history of land records
 //etherscan
 //time to complete a trx
+
+// user - has access to user stuff
+// tehsildar - transfer ownership, checks if the buyer and seller agree on a price, approve lekhpal
+// lekhpal -  land verification, buyer seller checks
+// witness - will be present with tehsildar and will witness the transaction happening
+// sdm - admin has everything
