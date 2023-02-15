@@ -2,10 +2,10 @@
 pragma solidity ^0.8.17;
 
 contract Land {
-    address contractOwner;
+    address SDM;
 
     constructor(){
-        contractOwner = msg.sender;
+        SDM = msg.sender;
     }
 
     struct Landreg {
@@ -34,7 +34,7 @@ contract Land {
         bool isUserVerified;
     }
 
-    struct LandInspector {
+    struct Lekhpal {
         uint id;
         address _addr;
         string name;
@@ -43,13 +43,13 @@ contract Land {
         string city;
     }
 
-    uint inspectorsCount;
+    uint lekhpalCount;
     uint public userCount;
     uint public landsCount;
 
-    mapping(address => LandInspector) public InspectorMapping;
-    mapping(uint => address[]) allLandInspectorList;
-    mapping(address => bool)  RegisteredInspectorMapping;
+    mapping(address => Lekhpal) public lekhpalMapping;
+    mapping(uint => address[]) lekhpalList;
+    mapping(address => bool)  registeredLekhpalMapping;
     mapping(address => User) public UserMapping;
     mapping(uint => address)  AllUsers;
     mapping(uint => address[])  allUsersList;
@@ -59,49 +59,49 @@ contract Land {
     mapping(uint => uint[])  allLandList;
 
 
-    function isContractOwner(address _addr) public view returns(bool){
-        if(_addr==contractOwner)
+    function isSDM(address _addr) public view returns(bool){
+        if(_addr==SDM)
             return true;
         else
             return false;
     }
 
-    function changeContractOwner(address _addr)public {
-        require(msg.sender==contractOwner,"you are not contractOwner");
+    function changeSDM(address _addr)public {
+        require(msg.sender==SDM,"you are not SDM");
 
-        contractOwner=_addr;
+        SDM=_addr;
     }
 
-    //-----------------------------------------------LandInspector-----------------------------------------------
+    //-----------------------------------------------Lekhpal-----------------------------------------------
 
-    function addLandInspector(address _addr,string memory _name, uint _age, string memory _designation,string memory _city) public returns(bool){
-        if(contractOwner!=msg.sender)
+    function addLekhpal(address _addr,string memory _name, uint _age, string memory _designation,string memory _city) public returns(bool){
+        if(SDM!=msg.sender)
             return false;
-        require(contractOwner==msg.sender);
-        RegisteredInspectorMapping[_addr]=true;
-        allLandInspectorList[1].push(_addr);
-        InspectorMapping[_addr] = LandInspector(inspectorsCount,_addr,_name, _age, _designation,_city);
+        require(SDM==msg.sender);
+        registeredLekhpalMapping[_addr]=true;
+        lekhpalList[1].push(_addr);
+        lekhpalMapping[_addr] = Lekhpal(lekhpalCount,_addr,_name, _age, _designation,_city);
         return true;
     }
 
-    function removeLandInspector(address _addr) public{
-        require(msg.sender==contractOwner,"You are not contractOwner");
-        require(RegisteredInspectorMapping[_addr],"Land Inspector not found");
-        RegisteredInspectorMapping[_addr]=false;
-        uint len=allLandInspectorList[1].length;
+    function removeLekhpal(address _addr) public{
+        require(msg.sender==SDM,"You are not SDM");
+        require(registeredLekhpalMapping[_addr],"Land Inspector not found");
+        registeredLekhpalMapping[_addr]=false;
+        uint len=lekhpalList[1].length;
         for(uint i=0;i<len;i++)
         {
-            if(allLandInspectorList[1][i]==_addr)
+            if(lekhpalList[1][i]==_addr)
             {
-                allLandInspectorList[1][i]=allLandInspectorList[1][len-1];
-                allLandInspectorList[1].pop();
+                lekhpalList[1][i]=lekhpalList[1][len-1];
+                lekhpalList[1].pop();
                 break;
             }
         }
     }
 
-    function isLandInspector(address _id) public view returns (bool) {
-        if(RegisteredInspectorMapping[_id]){
+    function isLekhpal(address _id) public view returns (bool) {
+        if(registeredLekhpalMapping[_id]){
             return true;
         }else{
             return false;
@@ -134,7 +134,7 @@ contract Land {
     }
 
     function verifyUser(address _userId) public{
-        require(isLandInspector(msg.sender));
+        require(isLekhpal(msg.sender));
         UserMapping[_userId].isUserVerified=true;
     }
 
@@ -154,7 +154,7 @@ contract Land {
     }
 
     function verifyLand(uint _id) public{
-        require(isLandInspector(msg.sender));
+        require(isLekhpal(msg.sender));
         lands[_id].isLandVerified=true;
     }
     
@@ -164,7 +164,7 @@ contract Land {
 
 
     function transferOwnership(address _from, address _to, uint _id) public returns(bool){
-        require(isLandInspector(msg.sender),"you should be land inspector to call this function");
+        require(isLekhpal(msg.sender),"you should be land inspector to call this function");
         require(isUserVerified(_from));
         require(isUserVerified(_to));
         require(isLandVerified(_id));
