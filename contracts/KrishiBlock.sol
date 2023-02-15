@@ -20,6 +20,7 @@ contract Land {
         bool isforSell;
         address ownerAddress;
         bool isLandVerified;
+        address[] pastOwners;
     }
 
     struct User{
@@ -49,10 +50,6 @@ contract Land {
         string tehsil;
     }
 
-    struct landRecord {
-        address[] pastOwners;
-    }
-
     uint public userCount;
     uint public landsCount;
 
@@ -72,11 +69,6 @@ contract Land {
     mapping(address => Tehsildar) public tehsildarMapping;
     mapping(uint => address[]) tehsildarList;
     mapping(address => bool)  registeredTehsildarMapping;
-
-    // uint public recordId;
-    // mapping(uint => mapping(uint => address)) public landRecordMapping;
-
-    mapping (uint => landRecord) public landRecordMapping;
 
     //-----------------------------------------------SDM-----------------------------------------------
 
@@ -103,7 +95,7 @@ contract Land {
     function removeTehsildar(address _addr) public{
         require(msg.sender==SDM,"You are not SDM");
         require(registeredTehsildarMapping[_addr],"Tehsiladar not found");
-        registeredLekhpalMapping[_addr]=false;
+        registeredTehsildarMapping[_addr]=false;
         uint len=tehsildarList[1].length;
         for(uint i=0;i<len;i++)
         {
@@ -188,14 +180,14 @@ contract Land {
     function addLand(uint _area, string memory _address, uint landPrice,string memory _allLatiLongi, uint _propertyPID,string memory _surveyNum, string memory _document) public {
         require(isUserVerified(msg.sender));
         landsCount++;
-        lands[landsCount] = Landreg(landsCount, _area, _address, landPrice,_allLatiLongi,_propertyPID, _surveyNum , _document,false,payable(msg.sender),false);
+        lands[landsCount] = Landreg(landsCount, _area, _address, landPrice,_allLatiLongi,_propertyPID, _surveyNum , _document,false,payable(msg.sender),false,new address[](0));
         MyLands[msg.sender].push(landsCount);
         allLandList[1].push(landsCount);
     }
 
     function verifyLand(uint _id) public{
-        require(isLekhpal(msg.sender));
-        require(lands[_id].area != 0);
+        require(isLekhpal(msg.sender),"you should be lekhpal to call this function");
+        require(lands[_id].area != 0, "Land doesn't exist");
         lands[_id].isLandVerified=true;
     }
 
@@ -210,23 +202,22 @@ contract Land {
         require(isUserVerified(_to));
         require(isLandVerified(_id));
         require(lands[_id].ownerAddress == _from);
+
         lands[_id].ownerAddress = _to;
-
-        // recordId++;
-        // landRecordMapping[_id][recordId] = _from;
-        
-        landRecordMapping[_id] = landRecord(pastOwners.push(_from));
-        //need to figure out how to push into the aaray
-
+        lands[_id].pastOwners.push(_from);
         return true;
+    }
+
+    function checkPastOwner (uint _id, uint _ownerNum) public view returns(address) {
+        return lands[_id].pastOwners[_ownerNum];
+    }
+
+    function getPastOwners (uint _id) public view returns(address  [] memory) {
+        return lands[_id].pastOwners;
     }
 }
 
 //TO DO
 //consensus implementation - tehsildar(2), witness, bank, vakil, lekhpal(landsinspector), buyer, seller, sdm(contract owner)(1)
-//store history of land records
 //etherscan
 //time to complete a trx
-//record id continues to add up for different land id as well
-//land is being verified without its existence
-//tehsildar still shows it is there after being removed
