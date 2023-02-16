@@ -52,18 +52,20 @@ contract Land {
 
     uint public userCount;
     uint public landsCount;
+    uint public tehsildarCount;
+    uint public lekhpalCount;
 
     mapping(address => Lekhpal) public lekhpalMapping;
-    mapping(uint => address[]) lekhpalList;
+    mapping(uint => address[]) public lekhpalList;
     mapping(address => bool)  registeredLekhpalMapping;
 
     mapping(address => User) public UserMapping;
-    mapping(uint => address)  AllUsers;
-    mapping(uint => address[])  allUsersList;
+    mapping(uint => address) public AllUsers;
+    mapping(uint => address[]) public allUsersList;
     mapping(address => bool)  RegisteredUserMapping;
 
-    mapping(address => uint[]) public MyLands;
     mapping(uint => Landreg) public lands;
+    mapping(address => uint[]) public MyLands;
     mapping(uint => uint[]) public allLandList;
 
     mapping(address => Tehsildar) public tehsildarMapping;
@@ -89,6 +91,7 @@ contract Land {
         registeredTehsildarMapping[_addr]=true;
         tehsildarList[1].push(_addr);
         tehsildarMapping[_addr] = Tehsildar(_addr,_name,_age,_tehsil);
+        tehsildarCount++;
         return true;
     }
 
@@ -106,6 +109,16 @@ contract Land {
                 break;
             }
         }
+        tehsildarCount--;
+    }
+
+    function getTehsildarList() public view returns(address[] memory) {
+        address[] memory temp = new address[](tehsildarCount);
+        for(uint i = 0; i < tehsildarCount; i++)
+        {
+            temp[i] = tehsildarList[1][i]; 
+        }
+        return temp;
     }
 
     function isTehsildar(address _addr) public view returns (bool) {
@@ -120,6 +133,7 @@ contract Land {
         registeredLekhpalMapping[_addr]=true;
         lekhpalList[1].push(_addr);
         lekhpalMapping[_addr] = Lekhpal(_addr,_name, _age, _designation,_city);
+        lekhpalCount++;
         return true;
     }
 
@@ -137,6 +151,16 @@ contract Land {
                 break;
             }
         }
+        lekhpalCount--;
+    }
+
+    function getLekhpalList() public view returns(address[] memory) {
+        address[] memory temp = new address[](lekhpalCount);
+        for(uint i = 0; i < lekhpalCount; i++)
+        {
+            temp[i] = lekhpalList[1][i]; 
+        }
+        return temp;
     }
 
     function isLekhpal(address _addr) public view returns (bool) {
@@ -165,15 +189,29 @@ contract Land {
         UserMapping[msg.sender] = User(msg.sender, _name, _age, _city,_aadharNumber,_panNumber, _document,_email,false);
     }
 
-    function verifyUser(address _userId) public{
+    function verifyUser(address _userAddr) public{
+        require(isUserRegistered(_userAddr));
         require(isLekhpal(msg.sender));
-        UserMapping[_userId].isUserVerified=true;
+        UserMapping[_userAddr].isUserVerified=true;
     }
 
     function isUserVerified(address id) public view returns(bool){
         return UserMapping[id].isUserVerified;
     }
 
+    function getUnverifiedUsers() public view returns(address[] memory) {
+        address[] memory temp = new address[](userCount);
+        uint temp2;
+        for(uint i = 1; i <= userCount;i++)
+        {
+            if(UserMapping[AllUsers[i]].isUserVerified == false)
+            {
+                temp[temp2] = AllUsers[i];
+                temp2++;
+            }
+        }
+        return temp;
+    } 
 
 
     //-----------------------------------------------Land-----------------------------------------------
@@ -199,7 +237,6 @@ contract Land {
         return lands[id].isLandVerified;
     }
 
-
     function transferOwnership(address _from, address _to, uint _id) public returns(bool){
         require(isTehsildar(msg.sender),"you should be tehsildar to call this function");
         require(isUserVerified(_from));
@@ -224,6 +261,15 @@ contract Land {
         return lands[_id].allLatitudeLongitude;
     }
 
+    function getlands(address _addr) public view returns(Landreg[] memory) {
+      Landreg[] memory result = new Landreg[](landsCount);
+      for(uint i = 0; i < MyLands[_addr].length; i++)
+      {
+        result[i] = lands[MyLands[_addr][i]];
+      }
+      return result;
+    }
+
     function paginateLands(uint _resultsPerPage, uint _page) public view returns (Landreg[] memory){
         Landreg[] memory result = new Landreg[](_resultsPerPage);
         uint temp = 0;
@@ -235,10 +281,17 @@ contract Land {
         return result;
     }
 
+    function getUnverifiedLands() public view returns(uint[] memory) {
+        uint[] memory temp = new uint[](landsCount);
+        uint temp2;
+        for(uint i = 1; i <= landsCount;i++)
+        {
+            if(lands[i].isLandVerified == false)
+            {
+                temp[temp2] = lands[i].id;
+                temp2++;
+            }
+        }
+        return temp;
+    }
 }
-
-//TO DO
-
-//timestamp
-//frontend
-//manual consensus
