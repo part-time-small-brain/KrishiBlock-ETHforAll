@@ -13,7 +13,7 @@ contract Land {
         uint area;
         string landAddress;
         uint landPrice;
-        string allLatitudeLongitude;
+        string[] allLatitudeLongitude;
         uint propertyPID;
         string physicalSurveyNumber;
         string document;
@@ -62,9 +62,9 @@ contract Land {
     mapping(uint => address[])  allUsersList;
     mapping(address => bool)  RegisteredUserMapping;
 
-    mapping(address => uint[])  MyLands;
+    mapping(address => uint[]) public MyLands;
     mapping(uint => Landreg) public lands;
-    mapping(uint => uint[])  allLandList;
+    mapping(uint => uint[]) public allLandList;
 
     mapping(address => Tehsildar) public tehsildarMapping;
     mapping(uint => address[]) tehsildarList;
@@ -177,11 +177,15 @@ contract Land {
 
 
     //-----------------------------------------------Land-----------------------------------------------
-    function addLand(uint _area, string memory _address, uint landPrice,string memory _allLatiLongi, uint _propertyPID,string memory _surveyNum, string memory _document) public {
+    function addLand(string[] memory _coordinates,uint _area, string memory _address, uint landPrice, uint _propertyPID,string memory _surveyNum, string memory _document) public {
         require(isUserVerified(msg.sender));
         landsCount++;
-        lands[landsCount] = Landreg(landsCount, _area, _address, landPrice,_allLatiLongi,_propertyPID, _surveyNum , _document,false,payable(msg.sender),false,new address[](0));
+        lands[landsCount] = Landreg(landsCount, _area, _address, landPrice, new string[](0),_propertyPID, _surveyNum , _document,false,payable(msg.sender),false,new address[](0));
         MyLands[msg.sender].push(landsCount);
+        for (uint i = 0; i < _coordinates.length; i++)
+        {
+            lands[landsCount].allLatitudeLongitude.push(_coordinates[i]);
+        }
         allLandList[1].push(landsCount);
     }
 
@@ -215,9 +219,26 @@ contract Land {
     function getPastOwners (uint _id) public view returns(address  [] memory) {
         return lands[_id].pastOwners;
     }
+
+    function getcoordinates(uint _id) public view returns(string  [] memory) {
+        return lands[_id].allLatitudeLongitude;
+    }
+
+    function paginateLands(uint _resultsPerPage, uint _page) public view returns (Landreg[] memory){
+        Landreg[] memory result = new Landreg[](_resultsPerPage);
+        uint temp = 0;
+        for(uint i = (_resultsPerPage * _page - _resultsPerPage)+1; i < (_resultsPerPage * _page)+1; i++ )
+        {
+            result[temp] = lands[i];
+            temp++;
+        }
+        return result;
+    }
+
 }
 
 //TO DO
-//consensus implementation - tehsildar(2), witness, bank, vakil, lekhpal(landsinspector), buyer, seller, sdm(contract owner)(1)
-//etherscan
-//time to complete a trx
+
+//timestamp
+//frontend
+//manual consensus
