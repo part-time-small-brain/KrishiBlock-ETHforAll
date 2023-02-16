@@ -1,6 +1,6 @@
 import { Avatar, Box, Button, Heading, Text, VStack } from "@chakra-ui/react";
-import Link from "next/link";
 import { FC } from "react";
+import Link from "next/link";
 
 const Sidebar: FC = () => {
   return (
@@ -13,13 +13,12 @@ const Sidebar: FC = () => {
         <Link
           style={{
             width: "100%",
-            marginRight: 32
+            marginRight: 32,
           }}
           href={"/bruhh"}
           key={i}
         >
           <Button
-          as={"a"}
             w={"full"}
             colorScheme={"yellow"}
             borderStart={"none"}

@@ -5,3 +5,4 @@ const Home: NextPage = () => {
   return <Box>Shivom vs Gals</Box>;
 };
 export default Home;
+
