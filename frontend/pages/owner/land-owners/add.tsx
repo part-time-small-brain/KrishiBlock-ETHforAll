@@ -2,8 +2,6 @@ import { NextPage } from "next";
 import {
   FormControl,
   FormLabel,
-  FormErrorMessage,
-  FormHelperText,
   Input,
   Button,
   VStack,
@@ -25,7 +23,7 @@ const AddLandInspector: NextPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box p={4}>
-      <VStack as={"form"} spacing={4} maxW="container.md" >
+      <VStack as={"form"} spacing={4} maxW="container.md">
         <FormField
           name="Address"
           placeholder="Enter land owner's address"
@@ -61,9 +59,7 @@ const AddLandInspector: NextPage = () => {
         <ModalContent>
           <ModalHeader>Confirm Adding Land Owner</ModalHeader>
           <ModalCloseButton />
-          <ModalBody>
-            Add land owner with the following details
-          </ModalBody>
+          <ModalBody>Add land owner with the following details</ModalBody>
 
           <ModalFooter>
             <Button colorScheme="red" mr={3} onClick={onClose}>

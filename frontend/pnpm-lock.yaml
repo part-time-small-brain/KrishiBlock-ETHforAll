@@ -5,6 +5,8 @@ specifiers:
   '@emotion/react': ^11
   '@emotion/styled': ^11
   '@fontsource/inter': ^4.5.14
+  '@fontsource/josefin-sans': ^4.5.11
+  '@fontsource/yeseva-one': ^4.5.10
   '@types/node': 18.11.9
   '@types/react': 18.0.25
   '@types/react-dom': 18.0.8
@@ -21,6 +23,8 @@ dependencies:
   '@emotion/react': 11.10.5_fan5qbzahqtxlm5dzefqlqx5ia
   '@emotion/styled': 11.10.5_otcjdfkheatawhug6fwk7ldzni
   '@fontsource/inter': 4.5.14
+  '@fontsource/josefin-sans': 4.5.11
+  '@fontsource/yeseva-one': 4.5.10
   '@types/node': 18.11.9
   '@types/react': 18.0.25
   '@types/react-dom': 18.0.8
@@ -1278,6 +1282,14 @@ packages:
 
   /@fontsource/inter/4.5.14:
     resolution: {integrity: sha512-JDC9AocdPLuGsASkvWw9hS5gtHE7K9dOwL98XLrk5yjYqxy4uVnScG58NUvFMJDVJRl/7c8Wnap6PEs+7Zvj1Q==}
+    dev: false
+
+  /@fontsource/josefin-sans/4.5.11:
+    resolution: {integrity: sha512-3JvalsdOJc1XfERcarGsVMFOnPcWTQgMVzptnpg8pT27Al4g16Nj7S0nA4VSkIkyYoPArHGas2n7b1vu3pBHnA==}
+    dev: false
+
+  /@fontsource/yeseva-one/4.5.10:
+    resolution: {integrity: sha512-W+cylFcTAS5bqtQA/tg5jecOLcA4fl82AbxItToJFReei4fq7GoHCBLgLohMQxr4rXvTe4zBmPIWd0jy8Ceorw==}
     dev: false
 
   /@humanwhocodes/config-array/0.11.7:
