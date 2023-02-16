@@ -27,33 +27,11 @@ const Home: NextPage = () => {
       <WrapItem>
         <Card onSale />
       </WrapItem>
-      <WrapItem>
-        <Card />
-      </WrapItem>
-      <WrapItem>
-        <Card />
-      </WrapItem>
-      <WrapItem>
-        <Card />
-      </WrapItem>
-      <WrapItem>
-        <Card />
-      </WrapItem>
-      <WrapItem>
-        <Card />
-      </WrapItem>
     </Wrap>
   );
 };
 
-const Card: FC<{
-  area?: number;
-  unit?: "sq.ft" | "sq.km";
-  address?: string;
-  price?: number;
-  onSale?: boolean;
-  image ?: string;
-}> = ({
+const Card: FC<Partial<Land>> = ({
   area = 2500,
   unit = "sq.ft",
   address = "Sant Nagar, Burari, Delhi",
@@ -82,7 +60,7 @@ const Card: FC<{
         />
         <Verified
           verified="yes"
-          props={{ position: "absolute", top: -2, right: -2 }}
+          props={{ position: "absolute", top: -4, right: -4 }}
         />
       </Box>
       <Flex display={"inline-flex"} alignItems="center" gap={2}>
@@ -108,7 +86,7 @@ const Verified: FC<{ verified: "yes" | "pending"; props?: BoxProps }> = ({
   props,
 }) => {
   return (
-    <Box color={"twitter.300"} {...props} w="30" h={30}>
+    <Box color={"twitter.300"} {...props} w={"16"} h={"16"}>
       <svg
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"

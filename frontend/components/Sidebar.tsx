@@ -1,4 +1,17 @@
-import { Avatar, Box, Button, Heading, Text, VStack } from "@chakra-ui/react";
+import {
+  Avatar,
+  Box,
+  Button,
+  Heading,
+  HStack,
+  Menu,
+  MenuButton,
+  MenuItem,
+  MenuList,
+  Stack,
+  Text,
+  VStack,
+} from "@chakra-ui/react";
 import { FC } from "react";
 import Link from "next/link";
 
@@ -59,18 +72,15 @@ RoleLinks.set("landInspector", [
 ]);
 
 const Sidebar: FC = () => {
+  console.log(RoleLinks.get("user")?.length);
   return (
-    <VStack w="full" py={8} spacing={4} pos={"sticky"} top={0}>
-      {/* <VStack mb={8} textTransform="lowercase">
-        <Avatar mb={4} size={"xl"} />
-        <Text>Shivom Srivastava</Text>
-        <Text fontSize={"xs"}>user</Text>
-      </VStack> */}
+    <VStack w="full" pt={8} spacing={4} pos={"sticky"} top={0}>
       {RoleLinks.get("user")!.map((val, i) => (
         <Link
           style={{
             width: "100%",
             marginRight: 32,
+            marginBottom: (i === (RoleLinks.get("user")!.length - 1) ) ? "auto" : "none"
           }}
           href={val.href}
           key={i}
@@ -88,6 +98,13 @@ const Sidebar: FC = () => {
           </Button>
         </Link>
       ))}
+      <Stack position={"fixed"} bottom="0" left={0} gap={4} direction={"row"} p={8} alignItems={"center"} justify={"start"}>
+        <Avatar src="https://bit.ly/broken-link" />
+        <VStack h="full" alignItems={"start"} justifyContent={"center"} lineHeight={0} gap={2}>
+          <Text>Shivom Srivastava</Text>
+          <Text fontSize={"sm"} >user</Text>
+        </VStack>
+      </Stack>
     </VStack>
   );
 };
