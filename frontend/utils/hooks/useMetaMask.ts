@@ -24,8 +24,10 @@ const useMetaMask = () => {
         function (accounts: string[]) {
           if (accounts && accounts.length) {
             setConnectedAccount(accounts[0]);
+            setIsConnected(true);
           } else {
             setConnectedAccount(null);
+            setIsConnected(false);
           }
         }
       );

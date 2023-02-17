@@ -14,34 +14,24 @@ RoleLinks.set("user", [
     href: "/user/lands/add",
     name: "Add Land",
     description: "Add a new land for the current user",
-  },
-  // {
-  //   href: "/user/requests/recieved",
-  //   name: "My Requests",
-  //   description: "Requests recieved by the user",
-  // },
-  // {
-  //   href: "/user/requests/sent",
-  //   name: "Requests Sent",
-  //   description: "Requests sent by the user",
-  // },
+  }
 ]);
 
 RoleLinks.set("landInspector", [
   {
-    href: "/land-inspector/verify/user",
+    href: "/lekhpal/verify/user",
     name: "Verify User",
     description:
       "Verify Users, Land Inspectors will be presented with a list of users",
   },
   {
-    href: "/land-inspector/verify/land",
+    href: "/lekhpal/verify/land",
     name: "Verify Land",
     description:
       "Verify Land, Land owner will be presented with a list of lands to verify",
   },
   {
-    href: "/land-inspector/transfer",
+    href: "/lekhpal/transfer",
     name: "Transfer Ownership",
     description:
       "Land Inspector will be presented with a list of lands to transfer their ownership",

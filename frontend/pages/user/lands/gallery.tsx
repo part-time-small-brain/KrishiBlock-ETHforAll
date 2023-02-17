@@ -7,9 +7,10 @@ import {
   Image,
   Text,
   VStack,
+  Wrap,
+  WrapItem,
 } from "@chakra-ui/react";
 import { NextPage } from "next";
-import { Wrap, WrapItem } from "@chakra-ui/react";
 import { FC } from "react";
 
 const Gallery: NextPage = () => {
@@ -52,7 +53,7 @@ const Card: FC<Partial<Land>> = ({
   address = "Sant Nagar, Burari, Delhi",
   price = 30000,
   onSale = false,
-  image = "https://placekitten.com/600/800"
+  image = "https://placekitten.com/600/800",
 }) => {
   return (
     <VStack
@@ -79,9 +80,7 @@ const Card: FC<Partial<Land>> = ({
         />
       </Box>
       <Flex display={"inline-flex"} alignItems="center" gap={2}>
-        <Text fontSize={"xl"}>
-          {area}
-        </Text>
+        <Text fontSize={"xl"}>{area}</Text>
         <Text>{unit}</Text>
       </Flex>
       <Text textTransform={"capitalize"}>{address}</Text>

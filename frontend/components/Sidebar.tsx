@@ -1,10 +1,11 @@
 import { Avatar, Box, Button, Stack, Text, VStack } from "@chakra-ui/react";
 import { FC } from "react";
 import Link from "next/link";
-import Login from "./Login";
 import { useRouter } from "next/router";
 import RoleLinks from "../utils/links";
 import useMetaMask from "../utils/hooks/useMetaMask";
+
+// https://mumbai.polygonscan.com/address/0xbc96a64d480d70e96ee023e67017c06f0706548a
 
 const Sidebar: FC = () => {
   const router = useRouter();
@@ -47,7 +48,7 @@ const Sidebar: FC = () => {
         justify={"start"}
         onClick={() => connectWallet()}
       >
-        <Avatar src="https://bit.ly/broken-link" />
+        <Avatar src="https://source.boringavatars.com/" />
         <VStack
           h="full"
           alignItems={"start"}
@@ -55,8 +56,7 @@ const Sidebar: FC = () => {
           lineHeight={0}
           gap={2}
         >
-          {/* <Text>Shivom Srivastava</Text> */}
-          {false ? (
+          {isConnected ? (
             <>
               <Text>{connectedAccount?.slice(0, 10)}</Text>
               <Text fontSize={"sm"}>user</Text>
