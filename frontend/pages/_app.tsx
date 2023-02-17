@@ -11,6 +11,9 @@ import useWeb3 from "../utils/hooks/useWeb3";
 import useWeb3Store from "../utils/web3store";
 import useUserStore from "../utils/store";
 import shallow from "zustand/shallow";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
   useMetaMask();
@@ -57,7 +60,7 @@ function MyApp({ Component, pageProps }: AppProps) {
             status: "success",
             duration: 1000,
           });
-          router.push("/user/auth");
+          router.push("/user/create");
         } else {
           toast({
             title: `user profile found`,
@@ -101,6 +104,7 @@ function MyApp({ Component, pageProps }: AppProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userType, connectedAccount]);
   return (
+    <QueryClientProvider client={queryClient}>
     <ChakraProvider theme={theme}>
       {!isDashboard ? (
         <Component {...pageProps} />
@@ -110,6 +114,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         </Layout>
       )}
     </ChakraProvider>
+    </QueryClientProvider>
   );
 }
 

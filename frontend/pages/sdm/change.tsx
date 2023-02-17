@@ -1,9 +1,10 @@
+
 import { Box, Button, useDisclosure, VStack } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 
-import { FormField, TehsildarConfirmModal } from '../../../components/Form';
+import { FormField, TehsildarConfirmModal } from '../..//components/Form';
 
 const Auth: NextPage = () => {
   const {
@@ -23,22 +24,9 @@ const Auth: NextPage = () => {
         <FormField
           name="address"
           errorsObj={errors.address}
-          register={register}
-        />
-        <FormField
-          name="name"
-          errorsObj={errors.name}
-          register={register}
-        />
-        <FormField
-          name="age"
-          inputProps={{ type: "number" }}
-          errorsObj={errors.age}
-          register={register}
-        />
-        <FormField
-          name="tehsil"
-          errorsObj={errors.tehsil}
+          inputProps={{
+            placeholder: "Address of the new SDM"
+          }}
           register={register}
         />
           <Button

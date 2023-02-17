@@ -19,6 +19,11 @@ RoleLinks.set("3", [
     name: "List Tehsildars",
     description: "List out all the tehsildars",
   },
+  {
+    href: "/sdm/change",
+    name: "Change SDM",
+    description: "Change the current SDM",
+  },
 ]);
 
 RoleLinks.set("2", [
