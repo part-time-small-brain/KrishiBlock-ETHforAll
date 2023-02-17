@@ -9,7 +9,10 @@ import {
   VStack,
 } from "@chakra-ui/react";
 import { NextPage } from "next";
+import { useEffect, useState } from "react";
 import { UserModal, AdminModal } from "../components/Home";
+import useMetaMask from "../utils/hooks/useMetaMask";
+import useWeb3 from "../utils/hooks/useWeb3";
 
 const props: ButtonProps = {
   width: "100px",
@@ -18,16 +21,21 @@ const props: ButtonProps = {
 };
 
 const Home: NextPage = () => {
-  const {
-    isOpen: adminIsOpen,
-    onOpen: adminOnOpen,
-    onClose: adminOnClose,
-  } = useDisclosure();
-  const {
-    isOpen: userIsOpen,
-    onOpen: userOnOpen,
-    onClose: userOnClose,
-  } = useDisclosure();
+  const { isConnected, connectedAccount } = useMetaMask();
+  const { contract, balance } = useWeb3();
+  const [sdmHai, setSDMHai] = useState(false);
+  const isSDM = async () => {
+    if (contract && connectedAccount) {
+      const isSDM = await contract.isSDM(connectedAccount);
+      setSDMHai(isSDM);
+    }
+  };
+  useEffect(() => {
+    console.log("nice");
+    isSDM();
+  });
+  const { isOpen: adminIsOpen, onOpen: adminOnOpen, onClose: adminOnClose, } = useDisclosure();
+  const { isOpen: userIsOpen, onOpen: userOnOpen, onClose: userOnClose } = useDisclosure();
   return (
     <Grid
       height={"100vh"}
@@ -65,15 +73,22 @@ const Home: NextPage = () => {
           </svg>
         </Heading>
         <Text>
+          {isConnected && (sdmHai ? "YES Acount is SDM" : "NO NHI hai")}
+        </Text>
+        <Text>
           Very Epic Smoodh app, Can get you a lot of bitches. A lot of &apos;em.
         </Text>
         <HStack>
-          <Button {...props} onClick={adminOnOpen}>Admin</Button>
-          <Button {...props} onClick={userOnOpen}>User</Button>
+          <Button {...props} onClick={adminOnOpen}>
+            Admin
+          </Button>
+          <Button {...props} onClick={userOnOpen}>
+            User
+          </Button>
         </HStack>
       </VStack>
-      <AdminModal onClose={adminOnClose} isOpen={adminIsOpen}/>
-      <UserModal onClose={userOnClose} isOpen={userIsOpen}/>
+      <AdminModal onClose={adminOnClose} isOpen={adminIsOpen} />
+      <UserModal onClose={userOnClose} isOpen={userIsOpen} />
     </Grid>
   );
 };

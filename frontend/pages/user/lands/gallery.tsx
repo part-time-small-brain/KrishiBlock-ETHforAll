@@ -51,7 +51,6 @@ const Card: FC<Partial<Land>> = ({
   area = 2500,
   unit = "sq.ft",
   address = "Sant Nagar, Burari, Delhi",
-  price = 30000,
   onSale = false,
   image = "https://placekitten.com/600/800",
 }) => {
@@ -84,7 +83,6 @@ const Card: FC<Partial<Land>> = ({
         <Text>{unit}</Text>
       </Flex>
       <Text textTransform={"capitalize"}>{address}</Text>
-      <Text fontSize={"xl"}>₹ {price}</Text>
       <HStack>
         <Button disabled={onSale} colorScheme={"red"}>
           {onSale ? "Sell" : "For Sale"}

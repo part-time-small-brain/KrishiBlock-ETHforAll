@@ -15,12 +15,13 @@ import {
 } from "@chakra-ui/react";
 import { NextPage } from "next";
 
-const Entries: Array<Partial<Land & LandRequest>> = [
+const Entries: Array<Partial<Land>> = [
     {
         address: "Sant Nagar Burari",
         area: 300000,
         verified: false,
-        price: 324234234,
+        owner: "23423424",
+        id: 1
     },
 
 ];
@@ -43,8 +44,8 @@ const VerifyLand: NextPage = () => {
             return (
                 <Tr key={i}>
                   <Td>{i}</Td>
-                  <Td>{entry.landId}</Td>
-                  <Td>{entry.sellerAddress}</Td>
+                  <Td>{entry.id}</Td>
+                  <Td>{entry.owner}</Td>
                   <Td>{100000}</Td>
                   <Td>
                     <HStack>

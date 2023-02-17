@@ -11,15 +11,15 @@ import useMetaMask from "../utils/hooks/useMetaMask";
 function MyApp({ Component, pageProps }: AppProps) {
   const router = useRouter();
   const [isDashboard, setIsDashboard] = useState<boolean>(false);
-  const { isConnected } = useMetaMask();
+  const { isConnected,  } = useMetaMask();
   useEffect(() => {
     if (router.pathname !== "/") setIsDashboard(true);
     else setIsDashboard(false);
   }, [router.pathname]);
-  useEffect(() => {
-    if (!isConnected) router.push("/");
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isConnected]);
+  // useEffect(() => {
+  //   if (!isConnected) router.push("/");
+  // // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, [isConnected]);
   return (
     <ChakraProvider theme={theme}>
       {!isDashboard ? (

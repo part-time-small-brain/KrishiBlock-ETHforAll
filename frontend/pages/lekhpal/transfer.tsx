@@ -14,7 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { NextPage } from "next";
 
-const Entries: Array<Partial<LandRequest>> = [
+const Entries: Array<Partial<any>> = [
   {
     sellerAddress:
       "3ed4aff1a8ff8e28df3cd307112f9166886edcc85a27136908e3b1687b111f89",

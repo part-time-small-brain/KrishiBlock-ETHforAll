@@ -8,6 +8,8 @@ interface Land {
   pid: string;
   survey: string;
   document: string;
+  owner: string;
+  id: number;
 }
 
 interface User {

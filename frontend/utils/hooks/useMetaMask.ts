@@ -99,6 +99,7 @@ const useMetaMask = () => {
     checkIfWalletIsConnected();
     onChangeAccounts();
     onChangeChain();
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInstalledWallet]);
 
   return {

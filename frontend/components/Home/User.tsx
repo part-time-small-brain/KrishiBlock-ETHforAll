@@ -33,7 +33,7 @@ export const UserModal : FC<AdminModalProps> = ({ isOpen, onClose }) => {
             <Button colorScheme="red" mr={3} onClick={onClose}>
               Close
             </Button>
-            <ConnectWallet/>
+            <ConnectWallet disabled={true}/>
           </ModalFooter>
         </ModalContent>
       </Modal>
