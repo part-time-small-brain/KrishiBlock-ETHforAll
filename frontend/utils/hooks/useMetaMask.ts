@@ -1,9 +1,14 @@
 import React, { useState, useEffect, useCallback } from "react";
+import useWeb3Store from "../web3store";
 
 const useMetaMask = () => {
-  const [isInstalledWallet, setIsInstalledWallet] = useState<boolean>(false);
-  const [isConnected, setIsConnected] = useState<boolean>(false);
-  const [connectedAccount, setConnectedAccount] = useState<string | null>(null);
+
+  const connectedAccount = useWeb3Store(state => state.connectedAccount)
+  const isInstalledWallet = useWeb3Store(state => state.isInstalledWallet)
+  const isConnected = useWeb3Store(state => state.isConnected)
+  const setConnectedAccount = useWeb3Store(state => state.setConnectedAccount)
+  const setIsInstalledWallet= useWeb3Store(state => state.setIsInstalledWallet)
+  const setIsConnected = useWeb3Store(state => state.setIsConnected)
 
   const checkIfWalletIsInstalled = async () => {
     let flag: boolean = true;
@@ -74,23 +79,6 @@ const useMetaMask = () => {
     }
   };
 
-  const connectWallet = async () => {
-    try {
-      if (!isInstalledWallet) {
-        return false;
-      }
-      const accounts = await (window.ethereum as any).request({
-        method: "eth_requestAccounts",
-      });
-      if (accounts && accounts.length) {
-        setConnectedAccount(accounts[0]);
-      }
-    } catch (error) {
-      console.log(error);
-      throw new Error("No ethereum object.");
-    }
-  };
-
   useEffect(() => {
     checkIfWalletIsInstalled();
   }, []);
@@ -99,17 +87,9 @@ const useMetaMask = () => {
     checkIfWalletIsConnected();
     onChangeAccounts();
     onChangeChain();
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInstalledWallet]);
 
-  return {
-    isInstalledWallet,
-    isConnected,
-    connectedAccount,
-    checkIfWalletIsInstalled,
-    checkIfWalletIsConnected,
-    connectWallet,
-  };
 };
 
 export default useMetaMask;

@@ -7,19 +7,24 @@ import "../styles/globals.css";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import useMetaMask from "../utils/hooks/useMetaMask";
+import useWeb3 from "../utils/hooks/useWeb3";
+import useWeb3Store from "../utils/web3store";
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useMetaMask();
+  useWeb3();
   const router = useRouter();
   const [isDashboard, setIsDashboard] = useState<boolean>(false);
-  const { isConnected,  } = useMetaMask();
+
+  const isConnected = useWeb3Store((state) => state.connectedAccount);
   useEffect(() => {
     if (router.pathname !== "/") setIsDashboard(true);
     else setIsDashboard(false);
   }, [router.pathname]);
-  // useEffect(() => {
-  //   if (!isConnected) router.push("/");
-  // // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, [isConnected]);
+  useEffect(() => {
+    if (!isConnected) router.push("/");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isConnected]);
   return (
     <ChakraProvider theme={theme}>
       {!isDashboard ? (

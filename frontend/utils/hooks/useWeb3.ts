@@ -1,16 +1,15 @@
-import React, { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { ethers } from "ethers";
-import useMetaMask from "./useMetaMask";
 import { contractAddress } from "../constants";
 import abi from "../abi.json";
+import useWeb3Store from "../web3store";
+import shallow from "zustand/shallow"
 
 const useWeb3 = () => {
-  const { connectedAccount } = useMetaMask();
-  const [balance, setBalance] = useState<string | number>(0);
+  const connectedAccount = useWeb3Store((state) => state.connectedAccount);
+  const [setBalance] = useWeb3Store(state => [state.setBalance], shallow)
   const [provider, setProvider] = useState<any>(null);
-  const [contract, setContract] = useState<ethers.Contract | null>(
-    null
-  );
+  const [setContract] = useWeb3Store(state => [state.setContract], shallow)
 
   const BalanceContract = useCallback(async () => {
     const balance = await provider.getBalance(connectedAccount);
@@ -31,13 +30,6 @@ const useWeb3 = () => {
   useEffect(() => {
     if (connectedAccount && provider) BalanceContract();
   }, [connectedAccount, provider, BalanceContract]);
-
-  return {
-    balance,
-    web3Provider: provider,
-    contract
-  };
 };
 
-
-export default useWeb3
+export default useWeb3;

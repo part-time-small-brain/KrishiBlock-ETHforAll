@@ -36,7 +36,7 @@ const Card: FC<Partial<Land>> = ({
   unit = "sq.ft",
   address = "Sant Nagar, Burari, Delhi",
   onSale = false,
-  image = "https://placekitten.com/600/800"
+  image = "https://placekitten.com/600/800",
 }) => {
   return (
     <VStack
@@ -63,9 +63,7 @@ const Card: FC<Partial<Land>> = ({
         />
       </Box>
       <Flex display={"inline-flex"} alignItems="center" gap={2}>
-        <Text fontSize={"xl"}>
-          {area}
-        </Text>
+        <Text fontSize={"xl"}>{area}</Text>
         <Text>{unit}</Text>
       </Flex>
       <Text textTransform={"capitalize"}>{address}</Text>

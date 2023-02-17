@@ -1,9 +1,32 @@
 import { Button } from "@chakra-ui/react";
 import { FC } from "react";
-import useMetaMask from "../../utils/hooks/useMetaMask";
+import useWeb3Store from "../../utils/web3store";
 
-export const ConnectWallet: FC<{ disabled: boolean }> = ({ disabled }) => {
-  const { connectWallet, isConnected } = useMetaMask();
+export const ConnectWallet: FC<{
+  disabled: boolean;
+  callback?: (props: any | undefined) => void;
+}> = ({ disabled }) => {
+  const isConnected = useWeb3Store((state) => state.isConnected);
+  const isInstalledWallet = useWeb3Store((state) => state.isInstalledWallet);
+  const setConnectedAccount = useWeb3Store(
+    (state) => state.setConnectedAccount
+  );
+  const connectWallet = async () => {
+    try {
+      if (!isInstalledWallet) {
+        return false;
+      }
+      const accounts = await (window.ethereum as any).request({
+        method: "eth_requestAccounts",
+      });
+      if (accounts && accounts.length) {
+        setConnectedAccount(accounts[0]);
+      }
+    } catch (error) {
+      console.log(error);
+      throw new Error("No ethereum object.");
+    }
+  };
   return (
     <Button
       onClick={connectWallet}

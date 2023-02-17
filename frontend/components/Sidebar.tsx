@@ -1,15 +1,15 @@
-import { Avatar, Box, Button, Stack, Text, VStack } from "@chakra-ui/react";
+import { Avatar, Button, Stack, Text, VStack } from "@chakra-ui/react";
 import { FC } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import RoleLinks from "../utils/links";
-import useMetaMask from "../utils/hooks/useMetaMask";
+import useWeb3Store from "../utils/web3store";
 
 // https://mumbai.polygonscan.com/address/0xbc96a64d480d70e96ee023e67017c06f0706548a
 
 const Sidebar: FC = () => {
   const router = useRouter();
-  const { connectWallet, connectedAccount, isConnected } = useMetaMask();
+  const [ connectedAccount, isConnected ] = useWeb3Store(state => [state.connectedAccount, state.isConnected]);
   return (
     <VStack w="full" pt={8} spacing={4} pos={"sticky"} top={0}>
       <Link href={"/"}>Home (temp)</Link>
@@ -47,7 +47,6 @@ const Sidebar: FC = () => {
         p={8}
         alignItems={"center"}
         justify={"start"}
-        onClick={() => connectWallet()}
       >
         <Avatar src="https://source.boringavatars.com/" />
         <VStack

@@ -22,6 +22,12 @@ interface User {
   verified: boolean;
 }
 
+type usertype =
+  | "1"
+  | "2"
+  | "3"
+  | "4" 
+  | undefined;
 
 interface LinkItemInterface {
   href: string;

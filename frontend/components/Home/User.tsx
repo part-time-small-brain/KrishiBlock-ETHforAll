@@ -9,7 +9,8 @@ import {
   ModalOverlay,
   Text,
 } from '@chakra-ui/react';
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
+import useUserStore from '../../utils/store';
 import { ConnectWallet } from './ConnectWallet';
 
 interface AdminModalProps {
@@ -18,11 +19,18 @@ interface AdminModalProps {
 }
 
 export const UserModal : FC<AdminModalProps> = ({ isOpen, onClose }) => {
-
+  const setUserType = useUserStore((state) => state.setUserType);
+  useEffect(() => {
+    setUserType("4");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isOpen]);
   return (
     <>
       <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose} isCentered>
-        <ModalOverlay />
+        <ModalOverlay
+          bg="blackAlpha.300"
+          backdropFilter="blur(10px)"
+        />
         <ModalContent>
           <ModalHeader>Oh Hellow User 👋</ModalHeader>
           <ModalCloseButton />

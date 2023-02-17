@@ -13,7 +13,8 @@ import {
   Stack,
   Text,
 } from "@chakra-ui/react";
-import { FC, useState } from "react";
+import { FC, useCallback, useEffect, useState } from "react";
+import useUserStore from "../../utils/store";
 import { ConnectWallet } from "./ConnectWallet";
 
 interface AdminModalProps {
@@ -22,7 +23,15 @@ interface AdminModalProps {
 }
 
 export const AdminModal: FC<AdminModalProps> = ({ isOpen, onClose }) => {
-  const [value, setValue] = useState<string | undefined>(undefined);
+  const [value, setValue] = useState<usertype | string>("1");
+  const setUserType = useUserStore((state) => state.setUserType);
+  useEffect(() => {
+    console.log(`setting global user type to ${value}`);
+    setUserType(value as usertype);
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [value, isOpen]);
+
   return (
     <>
       <Modal
@@ -31,12 +40,17 @@ export const AdminModal: FC<AdminModalProps> = ({ isOpen, onClose }) => {
         onClose={onClose}
         isCentered
       >
-        <ModalOverlay />
+        <ModalOverlay
+          bg="blackAlpha.300"
+          backdropFilter="blur(10px)"
+        />
         <ModalContent>
           <ModalHeader>Sooo you&apos;re an admin 🤔</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            <Text fontWeight="bold" mb="1rem">choose your role</Text>
+            <Text fontWeight="bold" mb="1rem">
+              choose your role
+            </Text>
             <RadioGroup onChange={setValue} value={value}>
               <Stack direction="row" gap="3">
                 <Radio value="1">Lekhpal</Radio>
