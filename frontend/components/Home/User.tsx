@@ -38,7 +38,7 @@ export const UserModal : FC<AdminModalProps> = ({ isOpen, onClose }) => {
             <Text fontWeight="bold" mb="1rem">Just click on the connect wallet button</Text>
           </ModalBody>
           <ModalFooter>
-            <Button colorScheme="red" mr={3} onClick={onClose}>
+            <Button colorScheme="red" mr={3} onClick={onClose} rounded="full" variant={"outline"}>
               Close
             </Button>
             <ConnectWallet disabled={false}/>

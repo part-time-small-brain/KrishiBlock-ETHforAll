@@ -5,6 +5,11 @@ const RoleLinks = new Map<
 
 RoleLinks.set("3", [
   {
+    href: "/sdm/",
+    name: "Home",
+    description: "SDM Home",
+  },
+  {
     href: "/sdm/tehsildars/add",
     name: "Add Tehsildar",
     description: "Add a tehsildar",
@@ -17,6 +22,11 @@ RoleLinks.set("3", [
 ]);
 
 RoleLinks.set("2", [
+  {
+    href: "/tehsildar/",
+    name: "Home",
+    description: "Tehsildar Home",
+  },
   {
     href: "/tehsildar/lekhpals/add",
     name: "Add lekhpal",
@@ -36,6 +46,11 @@ RoleLinks.set("2", [
 ])
 RoleLinks.set("1", [
   {
+    href: "/lekhpal/",
+    name: "Home",
+    description: "Lekhpal Home",
+  },
+  {
     href: "/lekhpal/verify/user",
     name: "Verify User",
     description:
@@ -50,6 +65,11 @@ RoleLinks.set("1", [
 ]);
 
 RoleLinks.set("4", [
+  {
+    href: "/user/",
+    name: "Home",
+    description: "User Home",
+  },
   {
     href: "/user/lands/my",
     name: "My Lands",

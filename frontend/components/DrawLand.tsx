@@ -27,7 +27,7 @@ const DrawLand: FC<{ onClose: () => void; isOpen: boolean }> = ({
     <>
       <Drawer onClose={onClose} isOpen={isOpen} size={"xl"}>
         <DrawerOverlay />
-        <DrawerContent bg={"purple.400"} color="white">
+        <DrawerContent>
           <DrawerCloseButton />
           <DrawerHeader fontSize={"3xl"}>Draw Land on Map</DrawerHeader>
           <DrawerBody >

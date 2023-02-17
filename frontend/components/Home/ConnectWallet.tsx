@@ -30,8 +30,9 @@ export const ConnectWallet: FC<{
   return (
     <Button
       onClick={connectWallet}
-      colorScheme={isConnected ? "green" : undefined}
+      colorScheme={isConnected ? "green" : "yellow"}
       disabled={isConnected || disabled}
+      rounded="full"
       leftIcon={
         isConnected ? (
           <>
@@ -57,6 +58,7 @@ export const ConnectWallet: FC<{
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
+            fill="currentColor"
             style={{
               height: "24px",
             }}

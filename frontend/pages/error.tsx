@@ -6,7 +6,7 @@ import useWeb3Store from "../utils/web3store";
 
 const ErrorPage: NextPage = () => {
   const router = useRouter();
-  const code = router.query.code || 404;
+  const code = router.query.code || 403;
   const isConnected = useWeb3Store((state) => state.isConnected);
   useEffect(() => {
     if (!isConnected) router.push("/");
@@ -16,8 +16,6 @@ const ErrorPage: NextPage = () => {
       <Grid
         height={"100vh"}
         placeItems="center"
-        bg="gray.900"
-        textColor={"white"}
       >
         <VStack>
           <Heading>{code}</Heading>

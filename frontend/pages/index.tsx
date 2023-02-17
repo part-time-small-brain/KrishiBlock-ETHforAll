@@ -16,6 +16,7 @@ import { UserModal, AdminModal } from "../components/Home";
 import useUserStore from "../utils/store";
 import useWeb3Store from "../utils/web3store";
 import shallow from "zustand/shallow";
+import KrishiHeading from "../components/Heading";
 
 const props: ButtonProps = {
   width: "100px",
@@ -42,12 +43,10 @@ const Home: NextPage = () => {
     <Grid
       height={"100vh"}
       placeItems="center"
-      bg="gray.900"
-      textColor={"white"}
     >
       <VStack gap={4}>
-        <Heading
-          color="yellow.300"
+        {/* <Heading
+          // color="yellow.300"
           display={"inline-flex"}
           alignItems="center"
           fontFamily={"body"}
@@ -58,7 +57,7 @@ const Home: NextPage = () => {
           krishi
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            fill={"white"}
+            fill={"none"}
             viewBox="0 0 24 24"
             strokeWidth={1.5}
             stroke="currentColor"
@@ -73,7 +72,8 @@ const Home: NextPage = () => {
               d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"
             />
           </svg>
-        </Heading>
+        </Heading> */}
+        <KrishiHeading sq={"64px"} textSize={"7xl"}/>
         {!isConnected ? (
           <HStack>
             <Button {...props} onClick={adminOnOpen}>
