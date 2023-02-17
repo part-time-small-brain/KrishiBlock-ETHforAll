@@ -2,24 +2,12 @@ import {
   Avatar,
   Box,
   Button,
-  Heading,
-  HStack,
-  Menu,
-  MenuButton,
-  MenuItem,
-  MenuList,
   Stack,
   Text,
   VStack,
 } from "@chakra-ui/react";
 import { FC } from "react";
 import Link from "next/link";
-
-interface LinkItemInterface {
-  href: string;
-  name: string;
-  description?: string;
-}
 
 const RoleLinks = new Map<"user" | "landInspector", Array<LinkItemInterface>>();
 RoleLinks.set("user", [
