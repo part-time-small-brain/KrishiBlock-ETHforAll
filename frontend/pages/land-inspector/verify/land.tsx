@@ -41,8 +41,7 @@ const VerifyLand: NextPage = () => {
         <Tbody>
           {Entries.map((entry, i) => {
             return (
-              <>
-                <Tr>
+                <Tr key={i}>
                   <Td>{i}</Td>
                   <Td>{entry.landId}</Td>
                   <Td>{entry.sellerAddress}</Td>
@@ -98,7 +97,6 @@ const VerifyLand: NextPage = () => {
                     </HStack>
                   </Td>
                 </Tr>
-              </>
             );
           })}
         </Tbody>

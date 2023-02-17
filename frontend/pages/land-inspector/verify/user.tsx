@@ -1,18 +1,4 @@
-import {
-  Box,
-  Button,
-  HStack,
-  IconButton,
-  Table,
-  TableCaption,
-  TableContainer,
-  Tbody,
-  Td,
-  Tfoot,
-  Th,
-  Thead,
-  Tr,
-} from "@chakra-ui/react";
+import { Box, Button, HStack, IconButton, Table, TableCaption, TableContainer, Tbody, Td, Tfoot, Th, Thead, Tr, } from "@chakra-ui/react";
 import { NextPage } from "next";
 import Link from "next/link";
 
@@ -69,8 +55,7 @@ const VerifyUser: NextPage = () => {
         <Tbody>
           {Entries.map((entry, i) => {
             return (
-              <>
-                <Tr>
+                <Tr key={i}>
                   <Td>{i}</Td>
                   <Td>{entry.address}</Td>
                   <Td>{entry.name}</Td>
@@ -130,7 +115,6 @@ const VerifyUser: NextPage = () => {
                     </HStack>
                   </Td>
                 </Tr>
-              </>
             );
           })}
         </Tbody>

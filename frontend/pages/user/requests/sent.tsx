@@ -69,8 +69,7 @@ const Home: NextPage = () => {
         <Tbody>
           {Entries.map((entry, i) => {
             return (
-              <>
-                <Tr>
+                <Tr key={i}>
                   <Td>{i}</Td>
                   <Td>{entry.landId}</Td>
                   <Td>{entry.sellerAddress}</Td>
@@ -101,7 +100,6 @@ const Home: NextPage = () => {
                     />
                   </Td>
                 </Tr>
-              </>
             );
           })}
         </Tbody>
