@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Box, Divider, Heading, Link, Text, Tooltip, VStack } from "@chakra-ui/react";
 import { QueryErrorResetBoundary, useQuery } from "@tanstack/react-query";
 import { NextPage } from "next";
@@ -11,12 +12,20 @@ const LekhpalHome: NextPage = () => {
     shallow
   );
   const query = useQuery({
-    queryKey: ["userInfo"],
+    queryKey: ["lekhpalInfo"],
     queryFn: async () => {
       const userInfo = await contract?.lekhpalMapping(connectedAccount);
-      return userInfo;
-    },
+      return userInfo || {
+        name: "Krishi Block Lekhpal",
+        age: 20,
+        designation: "None",
+        city: "None"
+      };
+    }
   });
+  useEffect(() => {
+    query.refetch();
+  }, [contract])
   if (query.isLoading) return <>Loading Profile....</>;
   return (
     <Box p={4}>

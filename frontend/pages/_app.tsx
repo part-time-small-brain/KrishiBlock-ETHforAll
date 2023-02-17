@@ -141,7 +141,7 @@ function MyApp({ Component, pageProps }: AppProps) {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Text
+      {/* <Text
         w="full"
         display={"inline-flex"}
         zIndex={10000}
@@ -151,7 +151,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       >
         {userType} {isConnected ? "yes" : "no"}{" "}
         {permissionMismatch ? "yes" : "no"}
-      </Text>
+      </Text> */}
       <ChakraProvider theme={theme}>
         {!isDashboard ? (
           <Component {...pageProps} />

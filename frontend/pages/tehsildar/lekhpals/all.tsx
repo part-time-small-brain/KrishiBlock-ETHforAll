@@ -1,22 +1,10 @@
-import {
-  Box,
-  Table,
-  TableCaption,
-  TableContainer,
-  Tbody,
-  Td,
-  Text,
-  Tfoot,
-  Th,
-  Thead,
-  Tr,
-  useToast,
-} from "@chakra-ui/react";
-import { useQuery } from "@tanstack/react-query";
-import { NextPage } from "next";
-import { useState } from "react";
-import shallow from "zustand/shallow";
-import useWeb3Store from "../../../utils/web3store";
+import { Box, Table, Tbody, Td, Tfoot, Th, Thead, Tr, useToast } from '@chakra-ui/react';
+import { useQuery } from '@tanstack/react-query';
+import { NextPage } from 'next';
+import { useState } from 'react';
+import shallow from 'zustand/shallow';
+
+import useWeb3Store from '../../../utils/web3store';
 
 const AllLandInspectors: NextPage = () => {
   const [addresses, setAddresses] = useState<Array<string>>([]);
