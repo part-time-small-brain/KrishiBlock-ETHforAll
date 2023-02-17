@@ -4,22 +4,23 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import RoleLinks from "../utils/links";
 import useWeb3Store from "../utils/web3store";
+import useUserStore from "../utils/store";
 
 // https://mumbai.polygonscan.com/address/0xbc96a64d480d70e96ee023e67017c06f0706548a
 
 const Sidebar: FC = () => {
   const router = useRouter();
   const [ connectedAccount, isConnected ] = useWeb3Store(state => [state.connectedAccount, state.isConnected]);
+  const userType = useUserStore(state => state.userType)
   return (
     <VStack w="full" pt={8} spacing={4} pos={"sticky"} top={0}>
-      <Link href={"/"}>Home (temp)</Link>
-      {RoleLinks.get("user")!.map((val, i) => (
+      {RoleLinks.get(userType || "4")!.map((val, i) => (
         <Link
           style={{
             width: "100%",
             marginRight: 32,
             marginBottom:
-              i === RoleLinks.get("user")!.length - 1 ? "auto" : "none",
+              i === RoleLinks.get(userType || "4")!.length - 1 ? "auto" : "none",
           }}
           href={val.href}
           key={i}

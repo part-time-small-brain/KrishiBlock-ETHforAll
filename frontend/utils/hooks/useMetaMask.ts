@@ -2,13 +2,16 @@ import React, { useState, useEffect, useCallback } from "react";
 import useWeb3Store from "../web3store";
 
 const useMetaMask = () => {
-
-  const connectedAccount = useWeb3Store(state => state.connectedAccount)
-  const isInstalledWallet = useWeb3Store(state => state.isInstalledWallet)
-  const isConnected = useWeb3Store(state => state.isConnected)
-  const setConnectedAccount = useWeb3Store(state => state.setConnectedAccount)
-  const setIsInstalledWallet= useWeb3Store(state => state.setIsInstalledWallet)
-  const setIsConnected = useWeb3Store(state => state.setIsConnected)
+  const connectedAccount = useWeb3Store((state) => state.connectedAccount);
+  const isInstalledWallet = useWeb3Store((state) => state.isInstalledWallet);
+  const isConnected = useWeb3Store((state) => state.isConnected);
+  const setConnectedAccount = useWeb3Store(
+    (state) => state.setConnectedAccount
+  );
+  const setIsInstalledWallet = useWeb3Store(
+    (state) => state.setIsInstalledWallet
+  );
+  const setIsConnected = useWeb3Store((state) => state.setIsConnected);
 
   const checkIfWalletIsInstalled = async () => {
     let flag: boolean = true;
@@ -81,6 +84,7 @@ const useMetaMask = () => {
 
   useEffect(() => {
     checkIfWalletIsInstalled();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
@@ -89,7 +93,6 @@ const useMetaMask = () => {
     onChangeChain();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isInstalledWallet]);
-
 };
 
 export default useMetaMask;

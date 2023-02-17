@@ -26,7 +26,6 @@ export const AdminModal: FC<AdminModalProps> = ({ isOpen, onClose }) => {
   const [value, setValue] = useState<usertype | string>("1");
   const setUserType = useUserStore((state) => state.setUserType);
   useEffect(() => {
-    console.log(`setting global user type to ${value}`);
     setUserType(value as usertype);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

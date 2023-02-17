@@ -1,9 +1,9 @@
 const RoleLinks = new Map<
-  "user" | "lekhpal" | "tehsildar" | "sdm",
+  "4" | "1" | "2" | "3",
   Array<LinkItemInterface>
 >();
 
-RoleLinks.set("sdm", [
+RoleLinks.set("3", [
   {
     href: "/sdm/tehsildars/add",
     name: "Add Tehsildar",
@@ -16,7 +16,7 @@ RoleLinks.set("sdm", [
   },
 ]);
 
-RoleLinks.set("tehsildar", [
+RoleLinks.set("2", [
   {
     href: "/tehsildar/lekhpals/add",
     name: "Add lekhpal",
@@ -34,7 +34,7 @@ RoleLinks.set("tehsildar", [
       "Land Inspector will be presented with a list of lands to transfer their ownership",
   },
 ])
-RoleLinks.set("lekhpal", [
+RoleLinks.set("1", [
   {
     href: "/lekhpal/verify/user",
     name: "Verify User",
@@ -49,7 +49,7 @@ RoleLinks.set("lekhpal", [
   },
 ]);
 
-RoleLinks.set("user", [
+RoleLinks.set("4", [
   {
     href: "/user/lands/my",
     name: "My Lands",

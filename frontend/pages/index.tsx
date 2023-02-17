@@ -6,6 +6,7 @@ import {
   HStack,
   Text,
   useDisclosure,
+  useToast,
   VStack,
 } from "@chakra-ui/react";
 import { NextPage } from "next";
@@ -23,23 +24,9 @@ const props: ButtonProps = {
 };
 
 const Home: NextPage = () => {
-  const contract = useWeb3Store((state) => state.contract);
-  const [sdmHai, setSDMHai] = useState(false);
-  const [isConnected, connectedAccount] = useWeb3Store(
-    (state) => [state.isConnected, state.connectedAccount],
-    shallow
-  );
+  const [isConnected] = useWeb3Store((state) => [state.isConnected], shallow);
   const router = useRouter();
-  const isSDM = async () => {
-    if (contract && connectedAccount) {
-      const isSDM = await contract.isSDM(connectedAccount);
-      setSDMHai(isSDM);
-    }
-  };
-  useEffect(() => {
-    console.log("nice");
-    isSDM();
-  });
+
   const {
     isOpen: adminIsOpen,
     onOpen: adminOnOpen,
@@ -50,13 +37,6 @@ const Home: NextPage = () => {
     onOpen: userOnOpen,
     onClose: userOnClose,
   } = useDisclosure();
-  const userState = useUserStore((state) => state);
-  const Web3State = useWeb3Store((state) => state);
-  const setUserType = useUserStore((state) => state.setUserType);
-
-  useEffect(() => {
-    setUserType(undefined);
-  }, []);
 
   return (
     <Grid
@@ -94,12 +74,6 @@ const Home: NextPage = () => {
             />
           </svg>
         </Heading>
-        {true && <Text>{JSON.stringify(userState)}</Text>}
-        {true && (
-          <Text>
-            {(sdmHai && isConnected) ? "SDM user lessgooo" : "Default or no user let's not goooo"}
-          </Text>
-        )}
         {!isConnected ? (
           <HStack>
             <Button {...props} onClick={adminOnOpen}>

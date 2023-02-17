@@ -4,6 +4,7 @@ import { devtools } from "zustand/middleware";
 interface UserState {
   loggedIn: boolean;
   permissionMismatch: boolean;
+  setPermissionMismatch: (pay: boolean) => void;
   user: Partial<User>;
   userType: usertype;
   setUserType: (pay: usertype) => void;
@@ -15,7 +16,7 @@ const useUserStore = create<UserState>()(
     permissionMismatch: false,
     user: {},
     userType: undefined,
-    permissionMismatcher: () => set((state) => ({ permissionMismatch: true })),
+    setPermissionMismatch: (pay) => set((state) => ({ permissionMismatch: pay })),
     setUserType: (pay) => set((state) => ({ userType: pay })),
   }))
 );

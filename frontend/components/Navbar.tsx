@@ -1,11 +1,13 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
 import { FC } from "react";
+import useUserStore from "../utils/store";
 
 interface NavbarProps {
   currentRoute?: string;
 }
 
 const Navbar: FC<NavbarProps> = ({ currentRoute }) => {
+  const userState = useUserStore(state => state)
   return (
     <Box h="full" w="full" display={"flex"} gap={16} alignItems="center" p={8}>
       <Heading
@@ -36,6 +38,7 @@ const Navbar: FC<NavbarProps> = ({ currentRoute }) => {
         </svg>
       </Heading>
       {currentRoute && <Text textTransform={"lowercase"}>{currentRoute}</Text>}
+      {JSON.stringify(userState)}
     </Box>
   );
 };
