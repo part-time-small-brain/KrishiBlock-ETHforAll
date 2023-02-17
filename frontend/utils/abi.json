@@ -1,6 +1,13 @@
 [
   { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
   {
+    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "name": "AllUsers",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [
       { "internalType": "address", "name": "", "type": "address" },
       { "internalType": "uint256", "name": "", "type": "uint256" }
@@ -83,6 +90,16 @@
   },
   {
     "inputs": [
+      { "internalType": "uint256", "name": "", "type": "uint256" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "name": "allUsersList",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
       { "internalType": "address", "name": "_addr", "type": "address" }
     ],
     "name": "changeSDM",
@@ -101,8 +118,44 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "getLekhpalList",
+    "outputs": [
+      { "internalType": "address[]", "name": "", "type": "address[]" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [{ "internalType": "uint256", "name": "_id", "type": "uint256" }],
     "name": "getPastOwners",
+    "outputs": [
+      { "internalType": "address[]", "name": "", "type": "address[]" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getTehsildarList",
+    "outputs": [
+      { "internalType": "address[]", "name": "", "type": "address[]" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getUnverifiedLands",
+    "outputs": [
+      { "internalType": "uint256[]", "name": "", "type": "uint256[]" }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getUnverifiedUsers",
     "outputs": [
       { "internalType": "address[]", "name": "", "type": "address[]" }
     ],
@@ -192,6 +245,23 @@
     "inputs": [],
     "name": "landsCount",
     "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "lekhpalCount",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "uint256", "name": "", "type": "uint256" },
+      { "internalType": "uint256", "name": "", "type": "uint256" }
+    ],
+    "name": "lekhpalList",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "stateMutability": "view",
     "type": "function"
   },
@@ -296,6 +366,13 @@
     "type": "function"
   },
   {
+    "inputs": [],
+    "name": "tehsildarCount",
+    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
     "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
     "name": "tehsildarMapping",
     "outputs": [
@@ -334,7 +411,7 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_userId", "type": "address" }
+      { "internalType": "address", "name": "_userAddr", "type": "address" }
     ],
     "name": "verifyUser",
     "outputs": [],

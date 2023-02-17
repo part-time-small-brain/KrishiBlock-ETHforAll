@@ -22,7 +22,7 @@ function sleep(ms: number) {
 
 const abi = ethers.utils.defaultAbiCoder;
 
-export const TehsildarConfirmModal: FC<{
+export const TransferConfirmModal: FC<{
   isOpen: boolean;
   onClose: () => void;
   data: any;
@@ -31,13 +31,12 @@ export const TehsildarConfirmModal: FC<{
   const toast = useToast();
   const contract = useWeb3Store((state) => state.contract);
   const mutation = useMutation(async () => {
-    const txn = await contract?.addTehsildar(
-      data.address,
-      data.name,
-      data.age,
-      data.tehsil,
+    const txn = await contract?.transferOwnership(
+      data.to,
+      data.from,
+      data.id,
     );
-    console.log("Adding Tehsildar ....");
+    console.log("Transfering Ownership ....");
     await txn.wait();
     setHash(txn.hash);
   });
@@ -48,7 +47,7 @@ export const TehsildarConfirmModal: FC<{
     if (mutation.isError) {
       toast({
         title: "Error",
-        description: "An error occured while adding Tehsildar",
+        description: "An error occured while transferring ownership",
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -57,7 +56,7 @@ export const TehsildarConfirmModal: FC<{
     }
     if (mutation.isSuccess) {
       toast({
-        title: "Tehsildar Added",
+        title: "Ownership Transferred",
         description: `successful ${hash?.slice(0, 15)}...`,
         status: "success",
         duration: 7000,
@@ -71,10 +70,10 @@ export const TehsildarConfirmModal: FC<{
       <Modal isOpen={isOpen} colorScheme="yellow" onClose={onClose} isCentered>
         <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
         <ModalContent>
-          <ModalHeader>Confirm Adding Tehsildar</ModalHeader>
+          <ModalHeader>Confirm Ownership Transfer</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            Add Tehsildar with the following details
+            Transfer Ownership with the following details
             <Code
               p={4}
               rounded="xl"
@@ -97,7 +96,7 @@ export const TehsildarConfirmModal: FC<{
             <Button
               colorScheme={"green"}
               onClick={confirmHandler}
-              loadingText="Adding Tehsildar"
+              loadingText="Transferring Ownership"
               isLoading={mutation.isLoading}
             >
               Continue

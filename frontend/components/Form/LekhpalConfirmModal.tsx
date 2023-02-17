@@ -10,7 +10,7 @@ import {
   ModalOverlay,
   useToast,
 } from '@chakra-ui/react';
-import { useMutation } from '@tanstack/react-query';
+import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { ethers } from 'ethers';
 import { FC, useEffect, useState } from 'react';
 
@@ -22,7 +22,7 @@ function sleep(ms: number) {
 
 const abi = ethers.utils.defaultAbiCoder;
 
-export const TehsildarConfirmModal: FC<{
+export const LekhpalConfirmModal: FC<{
   isOpen: boolean;
   onClose: () => void;
   data: any;
@@ -31,13 +31,14 @@ export const TehsildarConfirmModal: FC<{
   const toast = useToast();
   const contract = useWeb3Store((state) => state.contract);
   const mutation = useMutation(async () => {
-    const txn = await contract?.addTehsildar(
+    const txn = await contract?.addLekhpal(
       data.address,
       data.name,
       data.age,
-      data.tehsil,
+      data.designation,
+      data.city,
     );
-    console.log("Adding Tehsildar ....");
+    console.log("Adding Lekhpal ....");
     await txn.wait();
     setHash(txn.hash);
   });
@@ -48,7 +49,7 @@ export const TehsildarConfirmModal: FC<{
     if (mutation.isError) {
       toast({
         title: "Error",
-        description: "An error occured while adding Tehsildar",
+        description: "An error occured while adding Lekhpal",
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -57,7 +58,7 @@ export const TehsildarConfirmModal: FC<{
     }
     if (mutation.isSuccess) {
       toast({
-        title: "Tehsildar Added",
+        title: "Lekhpal Added",
         description: `successful ${hash?.slice(0, 15)}...`,
         status: "success",
         duration: 7000,
@@ -71,10 +72,10 @@ export const TehsildarConfirmModal: FC<{
       <Modal isOpen={isOpen} colorScheme="yellow" onClose={onClose} isCentered>
         <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
         <ModalContent>
-          <ModalHeader>Confirm Adding Tehsildar</ModalHeader>
+          <ModalHeader>Confirm Adding Lekhpal</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            Add Tehsildar with the following details
+            Add Lekhpal with the following details
             <Code
               p={4}
               rounded="xl"
@@ -97,7 +98,7 @@ export const TehsildarConfirmModal: FC<{
             <Button
               colorScheme={"green"}
               onClick={confirmHandler}
-              loadingText="Adding Tehsildar"
+              loadingText="Adding Lekhpal"
               isLoading={mutation.isLoading}
             >
               Continue

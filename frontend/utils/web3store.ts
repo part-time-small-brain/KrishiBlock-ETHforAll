@@ -16,8 +16,7 @@ interface Web3State {
   setBalance: (pay: number | string) => void;
 }
 
-const useWeb3Store = create<Web3State>()(
-  devtools((set) => ({
+const useWeb3Store = create<Web3State>()((set) => ({
     isInstalledWallet: false,
     isConnected: false,
     connectedAccount: null,
@@ -29,7 +28,7 @@ const useWeb3Store = create<Web3State>()(
     balance: 0,
     setContract: (pay) => set((state) => ({contract: pay})),
     setBalance: (pay) => set(state => ({balance: pay}))
-  }))
+  })
 );
 
 export default useWeb3Store;

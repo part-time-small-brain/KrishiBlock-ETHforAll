@@ -17,6 +17,7 @@ import useUserStore from "../utils/store";
 import useWeb3Store from "../utils/web3store";
 import shallow from "zustand/shallow";
 import KrishiHeading from "../components/Heading";
+import RoleLinks from "../utils/links";
 
 const props: ButtonProps = {
   width: "100px",
@@ -26,6 +27,10 @@ const props: ButtonProps = {
 
 const Home: NextPage = () => {
   const [isConnected] = useWeb3Store((state) => [state.isConnected], shallow);
+  const [userType, setUserType] = useUserStore(
+    (state) => [state.userType, state.setUserType],
+    shallow
+  );
   const router = useRouter();
 
   const {
@@ -40,51 +45,31 @@ const Home: NextPage = () => {
   } = useDisclosure();
 
   return (
-    <Grid
-      height={"100vh"}
-      placeItems="center"
-    >
+    <Grid height={"100vh"} placeItems="center">
       <VStack gap={4}>
-        {/* <Heading
-          // color="yellow.300"
-          display={"inline-flex"}
-          alignItems="center"
-          fontFamily={"body"}
-          gap={"2"}
-          userSelect="none"
-          fontSize={"7xl"}
-        >
-          krishi
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            fill={"none"}
-            viewBox="0 0 24 24"
-            strokeWidth={1.5}
-            stroke="currentColor"
-            style={{
-              width: "64px",
-              height: "64px",
-            }}
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              d="M21 7.5l-9-5.25L3 7.5m18 0l-9 5.25m9-5.25v9l-9 5.25M3 7.5l9 5.25M3 7.5v9l9 5.25m0-9v9"
-            />
-          </svg>
-        </Heading> */}
-        <KrishiHeading sq={"64px"} textSize={"7xl"}/>
+        <KrishiHeading sq={"64px"} textSize={"7xl"} />
         {!isConnected ? (
           <HStack>
             <Button {...props} onClick={adminOnOpen}>
               Admin
             </Button>
-            <Button {...props} onClick={userOnOpen}>
+            <Button
+              {...props}
+              onClick={() => {
+                setUserType("4");
+                userOnOpen();
+              }}
+            >
               User
             </Button>
           </HStack>
         ) : (
-          <Button colorScheme={"yellow"} onClick={() => router.push("/sdm")}>
+          <Button
+            colorScheme={"yellow"}
+            onClick={() =>
+              router.push(RoleLinks.get(userType as any)?.at(0)?.href as string)
+            }
+          >
             Go to your Dashboard
           </Button>
         )}

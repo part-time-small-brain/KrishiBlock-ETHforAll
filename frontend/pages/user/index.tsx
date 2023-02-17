@@ -21,7 +21,7 @@ const Home: NextPage = () => {
   return (
     <Box>
       <Heading fontSize={"4xl"}>
-        Profile
+        User
       </Heading>
       <Divider my={4} />
       <VStack alignItems={"start"} gap={2}>

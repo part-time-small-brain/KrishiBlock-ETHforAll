@@ -13,6 +13,7 @@ import {
 import { useMutation } from '@tanstack/react-query';
 import { ethers } from 'ethers';
 import { FC, useEffect, useState } from 'react';
+import useUserStore from '../../utils/store';
 
 import useWeb3Store from '../../utils/web3store';
 
@@ -22,7 +23,7 @@ function sleep(ms: number) {
 
 const abi = ethers.utils.defaultAbiCoder;
 
-export const TehsildarConfirmModal: FC<{
+export const ChangeConfirmModal: FC<{
   isOpen: boolean;
   onClose: () => void;
   data: any;
@@ -30,14 +31,12 @@ export const TehsildarConfirmModal: FC<{
   const [hash, setHash] = useState<string>();
   const toast = useToast();
   const contract = useWeb3Store((state) => state.contract);
+  const setPermissionMismatch = useUserStore((state) => state.setPermissionMismatch);
   const mutation = useMutation(async () => {
-    const txn = await contract?.addTehsildar(
-      data.address,
-      data.name,
-      data.age,
-      data.tehsil,
+    const txn = await contract?.changeSDM(
+      data.address
     );
-    console.log("Adding Tehsildar ....");
+    console.log("Changing SDM ....");
     await txn.wait();
     setHash(txn.hash);
   });
@@ -48,7 +47,7 @@ export const TehsildarConfirmModal: FC<{
     if (mutation.isError) {
       toast({
         title: "Error",
-        description: "An error occured while adding Tehsildar",
+        description: "An error occured while changing SDM",
         status: "error",
         duration: 3000,
         isClosable: true,
@@ -57,13 +56,14 @@ export const TehsildarConfirmModal: FC<{
     }
     if (mutation.isSuccess) {
       toast({
-        title: "Tehsildar Added",
+        title: "SDM Changed",
         description: `successful ${hash?.slice(0, 15)}...`,
         status: "success",
         duration: 7000,
         isClosable: true,
       });
       onClose();
+      setPermissionMismatch(true);
     }
   }, [mutation.isSuccess, mutation.isError, hash]);
   return (
@@ -71,10 +71,10 @@ export const TehsildarConfirmModal: FC<{
       <Modal isOpen={isOpen} colorScheme="yellow" onClose={onClose} isCentered>
         <ModalOverlay bg="blackAlpha.300" backdropFilter="blur(10px)" />
         <ModalContent>
-          <ModalHeader>Confirm Adding Tehsildar</ModalHeader>
+          <ModalHeader>Change SDM</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-            Add Tehsildar with the following details
+            Change SDM with the following details
             <Code
               p={4}
               rounded="xl"
@@ -97,7 +97,7 @@ export const TehsildarConfirmModal: FC<{
             <Button
               colorScheme={"green"}
               onClick={confirmHandler}
-              loadingText="Adding Tehsildar"
+              loadingText="Changing SDM"
               isLoading={mutation.isLoading}
             >
               Continue

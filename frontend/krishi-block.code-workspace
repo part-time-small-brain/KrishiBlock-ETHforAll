@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "."
+		},
+		{
+			"path": "../last-man-standing"
 		}
 	],
 	"settings": {}

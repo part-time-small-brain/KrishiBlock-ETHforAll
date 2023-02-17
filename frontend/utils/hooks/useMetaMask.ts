@@ -1,8 +1,10 @@
 import React, { useState, useEffect, useCallback } from "react";
+import useUserStore from "../store";
 import useWeb3Store from "../web3store";
 
 const useMetaMask = () => {
   const connectedAccount = useWeb3Store((state) => state.connectedAccount);
+  const setPermissionMismatch = useUserStore((state) => state.setPermissionMismatch);
   const isInstalledWallet = useWeb3Store((state) => state.isInstalledWallet);
   const isConnected = useWeb3Store((state) => state.isConnected);
   const setConnectedAccount = useWeb3Store(
@@ -36,6 +38,7 @@ const useMetaMask = () => {
           } else {
             setConnectedAccount(null);
             setIsConnected(false);
+            setPermissionMismatch(false);
           }
         }
       );

@@ -9,19 +9,18 @@ const ErrorPage: NextPage = () => {
   const code = router.query.code || 403;
   const isConnected = useWeb3Store((state) => state.isConnected);
   useEffect(() => {
-    if (!isConnected) router.push("/");
+    if (!isConnected) {
+      console.log("switching to home");
+      router.push("/");
+    }
   }, [isConnected]);
   return (
     <>
-      <Grid
-        height={"100vh"}
-        placeItems="center"
-      >
+      <Grid height={"100vh"} placeItems="center">
         <VStack>
           <Heading>{code}</Heading>
           <Text>
-            Permission Error, Please disconnect your
-            wallet to continue
+            Permission Error, Please disconnect your wallet to continue
           </Text>
         </VStack>
       </Grid>
