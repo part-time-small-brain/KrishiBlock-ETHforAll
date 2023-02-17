@@ -1,7 +1,7 @@
 import { Box, Grid } from "@chakra-ui/react"
 import { NextPage } from "next"
 
-const LandInspectorDashboard : NextPage = () => {
+const TransferOwnership : NextPage = () => {
     return (
         <Grid h="full" placeItems={"center"}>
             <Box fontSize={"3xl"}>
@@ -11,4 +11,4 @@ const LandInspectorDashboard : NextPage = () => {
     )
 }
 
-export default LandInspectorDashboard
+export default TransferOwnership

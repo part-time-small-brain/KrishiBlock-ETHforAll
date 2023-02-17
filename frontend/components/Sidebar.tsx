@@ -12,6 +12,7 @@ const Sidebar: FC = () => {
   const { connectWallet, connectedAccount, isConnected } = useMetaMask();
   return (
     <VStack w="full" pt={8} spacing={4} pos={"sticky"} top={0}>
+      <Link href={"/"}>Home (temp)</Link>
       {RoleLinks.get("user")!.map((val, i) => (
         <Link
           style={{

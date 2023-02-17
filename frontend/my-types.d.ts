@@ -2,7 +2,6 @@ interface Land {
   area: number;
   unit: "sq.ft" | "sq.km";
   address: string;
-  price: number;
   onSale: boolean;
   image : string;
   verified: boolean;
@@ -21,18 +20,6 @@ interface User {
   verified: boolean;
 }
 
-enum RequestStatus {
-    pending,
-    fulfilled
-}
-
-interface LandRequest {
-    landId :  number;
-    buyerAddress: string;
-    sellerAddress: string;
-    status: RequestStatus;
-    payment: boolean;
-}
 
 interface LinkItemInterface {
   href: string;

@@ -62,8 +62,10 @@ const useMetaMask = () => {
       });
       if (accounts && accounts.length) {
         setConnectedAccount(accounts[0]);
+        setIsConnected(true);
       } else {
         setConnectedAccount(null);
+        setIsConnected(false);
         console.log("No accounts found");
       }
     } catch (error) {
