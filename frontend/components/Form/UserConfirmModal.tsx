@@ -36,11 +36,7 @@ export const UserConfirmModal: FC<{
 			data.city,
 			data.hashes.adhar,
 			data.hashes.pan,
-<<<<<<< HEAD
-			data["Phone No"],
-=======
-			data.document,
->>>>>>> d8f17eab3df3697ad2b326bfc445f0f13a475047
+			data["phone no"],
 			data.email,
 		);
 		console.log("Registering User....");

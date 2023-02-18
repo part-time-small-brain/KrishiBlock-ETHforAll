@@ -57,11 +57,7 @@ const Auth: NextPage = () => {
 		);
 		const cid = response.data.Hash;
 		const { publicKey, signedMessage } = await Signature();
-<<<<<<< HEAD
 		const publicKeyUserB = ["0xC7feFe2b89d64963eE8521bb44b98b8CA68479b2"];
-=======
-		const publicKeyUserB = ["0xc5074464eBF403a44D4CFECe2C532aF0D9b6DF22"];
->>>>>>> d8f17eab3df3697ad2b326bfc445f0f13a475047
 		const res = await lighthouse.shareFile(
 			publicKey,
 			publicKeyUserB,
@@ -113,11 +109,7 @@ const Auth: NextPage = () => {
 					type="file"
 				/>
 				<FormField
-<<<<<<< HEAD
 					name="phone no"
-=======
-					name="Phone No."
->>>>>>> d8f17eab3df3697ad2b326bfc445f0f13a475047
 					errorsObj={errors.name}
 					register={register}
 				/>
@@ -130,11 +122,8 @@ const Auth: NextPage = () => {
 
 				<Button
 					onClick={handleSubmit((formData) => {
-<<<<<<< HEAD
 
 						console.log(formData)
-=======
->>>>>>> d8f17eab3df3697ad2b326bfc445f0f13a475047
 						setData(formData);
 						confirmOnOpen();
 					})}

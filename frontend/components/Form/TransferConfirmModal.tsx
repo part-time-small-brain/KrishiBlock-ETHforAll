@@ -35,6 +35,9 @@ export const TransferConfirmModal: FC<{
       data.to,
       data.from,
       data.id,
+      {
+        gasLimit: 16871406
+      }
     );
     console.log('Transfering Ownership ....');
     await txn.wait();

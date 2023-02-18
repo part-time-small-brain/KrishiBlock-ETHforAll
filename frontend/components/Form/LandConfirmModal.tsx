@@ -41,9 +41,9 @@ export const LandConfirmModal: FC<{
       data.pid,
       data.survey,
       data["land type"],
-      {
-        gasLimit: 6000000
-      }
+      // {
+      //   gasLimit: 6000000
+      // }
     );
     console.log('Adding Land ....');
     await txn.wait();
