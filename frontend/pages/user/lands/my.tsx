@@ -10,7 +10,7 @@ import useWeb3Store from "../../../utils/web3store";
 
 const Home: NextPage = () => {
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const [modalLand, setModalLand] = useState<Partial<Land>>({});
+	const [modalLand, setModalLand] = useState<any>({});
 	const [lands, setlands] = useState<any[]>([]);
 	const [contract, connectedAccount] = useWeb3Store(
 		(state) => [state.contract, state.connectedAccount],
@@ -24,6 +24,7 @@ const Home: NextPage = () => {
 		},
 		{
 			onSuccess: (data) => {
+				console.log(data);
 				setlands(
 					data
 						.map((land: any) => {

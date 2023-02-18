@@ -8,7 +8,7 @@ interface Land {
   pid: string;
   survey: string;
   document: string;
-  owner: string;
+  ownerAddress: string;
   id: number;
 }
 
@@ -34,3 +34,5 @@ interface LinkItemInterface {
 interface Window {
   ethereum: any;
 }
+
+type landType = Partial<Land> & { isLandVerified: boolean };

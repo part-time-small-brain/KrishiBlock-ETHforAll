@@ -19,7 +19,6 @@ import {
 } from "@chakra-ui/react";
 import { useQuery, useQueryClient } from "@tanstack/react-query";
 import { useEffect, useState } from "react";
-import shallow from "zustand/shallow";
 import useWeb3Store from "../utils/web3store";
 
 export default function ViewDetail({
@@ -31,9 +30,6 @@ export default function ViewDetail({
 	onClose: () => void;
 	data: landType;
 }) {
-	const queryClient = useQueryClient();
-	const connectedAccount = useWeb3Store((state) => state.connectedAccount);
-	const globalUserInfo = queryClient.getQueryData(["userInfo"]);
 	const [userInfo, setUserInfo] = useState<any>({
 		name: "Loading...",
 		age: 4,
@@ -41,9 +37,19 @@ export default function ViewDetail({
 		email: "Loading...",
 		phone: "Loading...",
 	});
-	useEffect(() => {
-		globalUserInfo && setUserInfo(globalUserInfo);
-	}, [globalUserInfo]);
+	const contract = useWeb3Store((state) => state.contract);
+	useQuery(
+		["user", data.ownerAddress],
+		async () => {
+			const ownerInfo = await contract?.UserMapping(data.ownerAddress);
+			return ownerInfo;
+		},
+		{
+			onSuccess(data) {
+				setUserInfo(data);
+			},
+		},
+	);
 	return (
 		<>
 			<Modal isOpen={isOpen} onClose={onClose} size="2xl" isCentered>
