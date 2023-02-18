@@ -232,7 +232,11 @@ export const VerifyUserModal: FC<{
 										View Pan
 									</Button>
 									<Button onClick={() => decrypt({ cid: user?.aadharNumber })}>
+<<<<<<< HEAD
 										View Aadhar
+=======
+										View Adhar
+>>>>>>> d8f17eab3df3697ad2b326bfc445f0f13a475047
 									</Button>
 								</HStack>
 							</>
