@@ -40,7 +40,7 @@ export const LandConfirmModal: FC<{
       data.price,
       data.pid,
       data.survey,
-      data.document,
+      data["land type"],
       {
         gasLimit: 6000000
       }
