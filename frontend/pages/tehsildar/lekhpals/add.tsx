@@ -19,7 +19,7 @@ const Auth: NextPage = () => {
   const [data, setData] = useState<any>();
   return (
     <Box>
-      <VStack spacing={4} maxW="container.md" fontSize={"sm"}>
+      <VStack spacing={4} maxW="container.md" fontSize={'sm'}>
         <FormField
           name="address"
           errorsObj={errors.address}
@@ -32,7 +32,7 @@ const Auth: NextPage = () => {
         />
         <FormField
           name="age"
-          inputProps={{ type: "number" }}
+          inputProps={{ type: 'number' }}
           errorsObj={errors.age}
           register={register}
         />
@@ -51,7 +51,7 @@ const Auth: NextPage = () => {
               setData(formData);
               confirmOnOpen();
             })}
-            colorScheme={"yellow"}
+            colorScheme={'yellow'}
             minW="48"
           >
             Add

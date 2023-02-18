@@ -21,12 +21,12 @@ import {
   Tr,
   useDisclosure,
   useToast,
-} from "@chakra-ui/react";
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import { NextPage } from "next";
-import { FC, useState } from "react";
+} from '@chakra-ui/react';
+import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
+import { NextPage } from 'next';
+import { FC, useState } from 'react';
 
-import useWeb3Store from "../../../utils/web3store";
+import useWeb3Store from '../../../utils/web3store';
 
 const VerifyLand: NextPage = () => {
   const { onOpen, isOpen, onClose } = useDisclosure();
@@ -35,20 +35,20 @@ const VerifyLand: NextPage = () => {
   const [land, setLand] = useState({
     id: 0,
     area: 0,
-    landAddress: "",
-    ownerAddress: "",
-    landPrice: "",
-    propertyPID: "",
-    physicalSurveyNumber: "",
-    document: "",
+    landAddress: '',
+    ownerAddress: '',
+    landPrice: '',
+    propertyPID: '',
+    physicalSurveyNumber: '',
+    document: '',
     isLandVerified: false,
   });
   const contract = useWeb3Store((state) => state.contract);
   const toast = useToast();
   const query = useQuery(
-    ["getUnverifiedLands"],
+    ['getUnverifiedLands'],
     async () => {
-      console.log("tryna query unverified lands");
+      console.log('tryna query unverified lands');
       const unverifiedLands = await contract?.getUnverifiedLands();
       return unverifiedLands;
     },
@@ -67,10 +67,10 @@ const VerifyLand: NextPage = () => {
       },
       onError: (err) => {
         toast({
-          title: "Error",
-          description: "Couldn't fetch data",
+          title: 'Error',
+          description: 'Couldn\'t fetch data',
           duration: 1000,
-          status: "error",
+          status: 'error',
           isClosable: true,
         });
       },
@@ -90,10 +90,10 @@ const VerifyLand: NextPage = () => {
       },
       onError: (err) => {
         toast({
-          title: "Error",
-          description: "Couldn't fetch data",
+          title: 'Error',
+          description: 'Couldn\'t fetch data',
           duration: 1000,
-          status: "error",
+          status: 'error',
           isClosable: true,
         });
       },
@@ -103,17 +103,17 @@ const VerifyLand: NextPage = () => {
   const verifyMutation = useMutation(
     async () => {
       const tx = await contract?.verifyLand(activeId);
-      console.log("Verifying land ", activeId);
+      console.log('Verifying land ', activeId);
       await tx.wait();
       return tx.hash;
     },
     {
       onSuccess: (data) => {
         toast({
-          title: "Success",
+          title: 'Success',
           description: `land verified ${data.slice(0, 10)}`,
           duration: 1000,
-          status: "success",
+          status: 'success',
           isClosable: true,
         });
         query.refetch();
@@ -121,10 +121,10 @@ const VerifyLand: NextPage = () => {
       },
       onError: () => {
         toast({
-          title: "Error",
-          description: "Couldn't Verify Land",
+          title: 'Error',
+          description: 'Couldn\'t Verify Land',
           duration: 3000,
-          status: "error",
+          status: 'error',
         });
         onClose();
       },
@@ -137,7 +137,7 @@ const VerifyLand: NextPage = () => {
 
   return (
     <>
-      <TableContainer maxW={"container.sm"}>
+      <TableContainer maxW={'container.sm'}>
         <Table variant="simple">
           <Thead>
             <Tr>
@@ -157,7 +157,7 @@ const VerifyLand: NextPage = () => {
                         aria-label="verify"
                         isLoading={getLand.isLoading && activeId == id}
                         onClick={() => {
-                          console.log("verify clicked for", id);
+                          console.log('verify clicked for', id);
                           setActiveId(id);
                           getLand.mutate();
                         }}
@@ -221,7 +221,7 @@ export const VerifyLandModal: FC<{
         <ModalContent>
           <ModalHeader>Verify Land</ModalHeader>
           <ModalCloseButton />
-          <ModalBody fontWeight={"bold"}>
+          <ModalBody fontWeight={'bold'}>
             <Text mb="1rem">Verify Land {JSON.parse(data.id)}</Text>
             <Text mb="1rem">OwnerAddress: {data.ownerAddress}</Text>
             {/* <Text mb="1rem">Price: {JSON.parse(data.landPrice)}</Text> */}
@@ -233,7 +233,7 @@ export const VerifyLandModal: FC<{
             <Button
               colorScheme="green"
               onClick={callback}
-              rounded={"full"}
+              rounded={'full'}
               isLoading={loading}
               loadingText="Verifying Land"
             >

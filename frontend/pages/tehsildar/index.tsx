@@ -1,9 +1,9 @@
-import { Box, Divider, Heading, Link, Text, Tooltip, VStack } from "@chakra-ui/react";
-import { QueryErrorResetBoundary, useQuery } from "@tanstack/react-query";
-import { NextPage } from "next";
-import { useEffect } from "react";
-import shallow from "zustand/shallow";
-import useWeb3Store from "../../utils/web3store";
+import { Box, Divider, Heading, Link, Text, Tooltip, VStack } from '@chakra-ui/react';
+import { QueryErrorResetBoundary, useQuery } from '@tanstack/react-query';
+import { NextPage } from 'next';
+import { useEffect } from 'react';
+import shallow from 'zustand/shallow';
+import useWeb3Store from '../../utils/web3store';
 
 const TehsildarHome: NextPage = () => {
   const [contract, connectedAccount, balance] = useWeb3Store(
@@ -11,7 +11,7 @@ const TehsildarHome: NextPage = () => {
     shallow
   );
   const query = useQuery({
-    queryKey: ["userInfo"],
+    queryKey: ['userInfo'],
     queryFn: async () => {
       const userInfo = await contract?.tehsildarMapping(connectedAccount);
       return userInfo;
@@ -20,12 +20,12 @@ const TehsildarHome: NextPage = () => {
   if (query.isLoading) return <>Loading Profile....</>;
   return (
     <Box p={4}>
-      <Heading fontSize={"4xl"}>
+      <Heading fontSize={'4xl'}>
         Tehsildar
       </Heading>
       <Divider my={4} />
-      <VStack alignItems={"start"} gap={2}>
-        <Text display={"inline-flex"} gap={2} w="full" fontSize={"2xl"}>
+      <VStack alignItems={'start'} gap={2}>
+        <Text display={'inline-flex'} gap={2} w="full" fontSize={'2xl'}>
           {query.data?.name}
         </Text>
         <Text>{connectedAccount}</Text>

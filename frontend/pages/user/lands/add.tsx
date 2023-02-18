@@ -1,10 +1,10 @@
-import { Box, Button, HStack, useDisclosure, VStack } from "@chakra-ui/react";
-import { NextPage } from "next";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
-import DrawLand from "../../../components/DrawLand";
+import { Box, Button, HStack, useDisclosure, VStack } from '@chakra-ui/react';
+import { NextPage } from 'next';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
+import DrawLand from '../../../components/DrawLand';
 
-import { FormField, LandConfirmModal } from "../../../components/Form";
+import { FormField, LandConfirmModal } from '../../../components/Form';
 
 const Auth: NextPage = () => {
   const {
@@ -25,10 +25,10 @@ const Auth: NextPage = () => {
   const [data, setData] = useState<any>();
   return (
     <Box p={4}>
-      <VStack spacing={4} maxW="container.md" fontSize={"sm"}>
+      <VStack spacing={4} maxW="container.md" fontSize={'sm'}>
         <FormField
           name="area"
-          inputProps={{ type: "number" }}
+          inputProps={{ type: 'number' }}
           errorsObj={errors.area}
           register={register}
         />
@@ -39,13 +39,13 @@ const Auth: NextPage = () => {
         />
         <FormField
           name="price"
-          inputProps={{ type: "number" }}
+          inputProps={{ type: 'number' }}
           errorsObj={errors.price}
           register={register}
         />
         <FormField
           name="pid"
-          inputProps={{ type: "number" }}
+          inputProps={{ type: 'number' }}
           errorsObj={errors.pid}
           register={register}
         />
@@ -68,7 +68,7 @@ const Auth: NextPage = () => {
               setData(formData);
               confirmOnOpen();
             })}
-            colorScheme={"yellow"}
+            colorScheme={'yellow'}
             minW="48"
           >
             Add

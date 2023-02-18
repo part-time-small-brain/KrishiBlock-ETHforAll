@@ -1,4 +1,4 @@
-import create from "zustand";
+import create from 'zustand';
 interface UserState {
   loggedIn: boolean;
   setLoggedIn: (pay: boolean) => void;
@@ -16,8 +16,8 @@ const useUserStore = create<UserState>()((set) => ({
   userType: undefined,
   setPermissionMismatch: (pay) => set((state) => ({ permissionMismatch: pay })),
   setUserType: (pay) => set((state) => {
-    localStorage.setItem("userType", (pay as string));
-    return { userType: pay }
+    localStorage.setItem('userType', (pay as string));
+    return { userType: pay };
   }),
   setLoggedIn: (pay) => set((state) => ({ loggedIn: pay })),
 }));

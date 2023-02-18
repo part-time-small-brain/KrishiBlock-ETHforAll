@@ -1,10 +1,9 @@
-import { Box, BoxProps, Grid } from "@chakra-ui/react";
-import { useAddress } from "@thirdweb-dev/react";
-import { useRouter } from "next/router";
-import { FC, ReactNode, useEffect } from "react";
-import Footer from "./Footer";
-import Navbar from "./Navbar";
-import Sidebar from "./Sidebar";
+import { Box, BoxProps, Grid } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
+import { FC, ReactNode } from 'react';
+import Footer from './Footer';
+import Navbar from './Navbar';
+import Sidebar from './Sidebar';
 
 interface LayoutProps {
   children?: ReactNode;
@@ -12,29 +11,28 @@ interface LayoutProps {
 
 const Layout: FC<LayoutProps> = ({ children }) => {
   const defaultProps: BoxProps = {
-    fontWeight: "bold",
+    fontWeight: 'bold',
   };
-  const address = useAddress();
   const router = useRouter();
   return (
     <Grid
       templateAreas={
-        "'navbar navbar navbar' 'sidebar main main' 'sidebar footer footer'"
+        '\'navbar navbar navbar\' \'sidebar main main\' \'sidebar footer footer\''
       }
       minHeight="100vh"
-      gridTemplateRows={"100px auto 100px"}
-      gridTemplateColumns={"300px auto"}
+      gridTemplateRows={'100px auto 100px'}
+      gridTemplateColumns={'300px auto'}
     >
-      <Box {...defaultProps} gridArea={"navbar"}>
+      <Box {...defaultProps} gridArea={'navbar'}>
         <Navbar currentRoute={router.pathname} />
       </Box>
-      <Box {...defaultProps} gridArea={"sidebar"}>
+      <Box {...defaultProps} gridArea={'sidebar'}>
         <Sidebar />
       </Box>
-      <Box {...defaultProps} gridArea={"main"} p={8}>
+      <Box {...defaultProps} gridArea={'main'} p={8}>
         {children}
       </Box>
-      <Box {...defaultProps} gridArea={"footer"}>
+      <Box {...defaultProps} gridArea={'footer'}>
         <Footer />
       </Box>
     </Grid>

@@ -20,12 +20,12 @@ const Auth: NextPage = () => {
   const [data, setData] = useState<any>();
   return (
     <Box p={4}>
-      <VStack spacing={4} maxW="container.md" fontSize={"sm"}>
+      <VStack spacing={4} maxW="container.md" fontSize={'sm'}>
         <FormField
           name="address"
           errorsObj={errors.address}
           inputProps={{
-            placeholder: "Address of the new SDM"
+            placeholder: 'Address of the new SDM'
           }}
           register={register}
         />
@@ -34,7 +34,7 @@ const Auth: NextPage = () => {
               setData(formData);
               confirmOnOpen();
             })}
-            colorScheme={"yellow"}
+            colorScheme={'yellow'}
             minW="48"
           >
             Change SDM

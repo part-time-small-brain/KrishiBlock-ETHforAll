@@ -9,10 +9,10 @@ import {
   ModalHeader,
   ModalOverlay,
   Text,
-} from "@chakra-ui/react";
-import { FC, useEffect } from "react";
-import useUserStore from "../../utils/store";
-import { ConnectWallet } from "./ConnectWallet";
+} from '@chakra-ui/react';
+import { FC, useEffect } from 'react';
+import useUserStore from '../../utils/store';
+import { ConnectWallet } from './ConnectWallet';
 
 interface AdminModalProps {
   isOpen: boolean;
@@ -44,7 +44,7 @@ export const UserModal: FC<AdminModalProps> = ({ isOpen, onClose }) => {
               mr={3}
               onClick={onClose}
               rounded="full"
-              variant={"outline"}
+              variant={'outline'}
             >
               Close
             </Button>

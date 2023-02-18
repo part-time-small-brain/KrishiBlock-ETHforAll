@@ -36,7 +36,7 @@ export const TransferConfirmModal: FC<{
       data.from,
       data.id,
     );
-    console.log("Transfering Ownership ....");
+    console.log('Transfering Ownership ....');
     await txn.wait();
     setHash(txn.hash);
   });
@@ -46,9 +46,9 @@ export const TransferConfirmModal: FC<{
   useEffect(() => {
     if (mutation.isError) {
       toast({
-        title: "Error",
-        description: "An error occured while transferring ownership",
-        status: "error",
+        title: 'Error',
+        description: 'An error occured while transferring ownership',
+        status: 'error',
         duration: 3000,
         isClosable: true,
       });
@@ -56,9 +56,9 @@ export const TransferConfirmModal: FC<{
     }
     if (mutation.isSuccess) {
       toast({
-        title: "Ownership Transferred",
+        title: 'Ownership Transferred',
         description: `successful ${hash?.slice(0, 15)}...`,
-        status: "success",
+        status: 'success',
         duration: 7000,
         isClosable: true,
       });
@@ -79,14 +79,14 @@ export const TransferConfirmModal: FC<{
               rounded="xl"
               mt={2}
               variant="outline"
-              colorScheme={"yellow"}
+              colorScheme={'yellow'}
             >
               {JSON.stringify(data, null, 8)}
             </Code>
           </ModalBody>
           <ModalFooter>
             <Button
-              variant={"outline"}
+              variant={'outline'}
               colorScheme="red"
               mr={3}
               onClick={onClose}
@@ -94,7 +94,7 @@ export const TransferConfirmModal: FC<{
               Go Back
             </Button>
             <Button
-              colorScheme={"green"}
+              colorScheme={'green'}
               onClick={confirmHandler}
               loadingText="Transferring Ownership"
               isLoading={mutation.isLoading}

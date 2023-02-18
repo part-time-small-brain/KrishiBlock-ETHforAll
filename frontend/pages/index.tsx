@@ -8,21 +8,21 @@ import {
   useDisclosure,
   useToast,
   VStack,
-} from "@chakra-ui/react";
-import { NextPage } from "next";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { UserModal, AdminModal } from "../components/Home";
-import useUserStore from "../utils/store";
-import useWeb3Store from "../utils/web3store";
-import shallow from "zustand/shallow";
-import KrishiHeading from "../components/Heading";
-import RoleLinks from "../utils/links";
+} from '@chakra-ui/react';
+import { NextPage } from 'next';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { UserModal, AdminModal } from '../components/Home';
+import useUserStore from '../utils/store';
+import useWeb3Store from '../utils/web3store';
+import shallow from 'zustand/shallow';
+import KrishiHeading from '../components/Heading';
+import RoleLinks from '../utils/links';
 
 const props: ButtonProps = {
-  width: "100px",
-  colorScheme: "yellow",
-  rounded: "xl",
+  width: '100px',
+  colorScheme: 'yellow',
+  rounded: 'xl',
 };
 
 const Home: NextPage = () => {
@@ -45,9 +45,9 @@ const Home: NextPage = () => {
   } = useDisclosure();
 
   return (
-    <Grid height={"100vh"} placeItems="center">
+    <Grid height={'100vh'} placeItems="center">
       <VStack gap={4}>
-        <KrishiHeading sq={"64px"} textSize={"7xl"} />
+        <KrishiHeading sq={'64px'} textSize={'7xl'} />
         {!isConnected ? (
           <HStack>
             <Button {...props} onClick={adminOnOpen}>
@@ -56,7 +56,7 @@ const Home: NextPage = () => {
             <Button
               {...props}
               onClick={() => {
-                setUserType("4");
+                setUserType('4');
                 userOnOpen();
               }}
             >
@@ -65,7 +65,7 @@ const Home: NextPage = () => {
           </HStack>
         ) : (
           <Button
-            colorScheme={"yellow"}
+            colorScheme={'yellow'}
             onClick={() =>
               router.push(RoleLinks.get(userType as any)?.at(0)?.href as string)
             }

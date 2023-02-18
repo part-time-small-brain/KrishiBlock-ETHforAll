@@ -1,0 +1,22 @@
+{
+  "formatter":{
+    "indentSize": 2,
+    "enabled": true,
+    "formatWithErrors": false,
+    "lineWidth": 80
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "suspicious": {
+        "noCommentText": "off",
+        "noExplicitAny": "off",
+        "noArrayIndexKey": "off"
+
+      },
+      "style": {
+        "noUnusedTemplateLiteral": "off"
+      }
+    }
+  }
+}

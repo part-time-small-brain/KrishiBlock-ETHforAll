@@ -1,48 +1,42 @@
-import { useDisclosure, Wrap, WrapItem } from "@chakra-ui/react";
-import { useQuery } from "@tanstack/react-query";
-import { NextPage } from "next";
-import { useEffect, useState } from "react";
+import { useDisclosure, Wrap, WrapItem } from '@chakra-ui/react';
+import { useQuery } from '@tanstack/react-query';
+import type { NextPage } from 'next';
+import { useState } from 'react';
 
-import Card from "../../../components/Card";
-import ViewDetail from "../../../components/ViewLand";
-import useWeb3Store from "../../../utils/web3store";
+import Card from '../../../components/Card';
+import ViewDetail from '../../../components/ViewLand';
+import useWeb3Store from '../../../utils/web3store';
 
-const Gallery: NextPage = () => {
+const Gallery : NextPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [modalLand, setModalLand] = useState<Partial<Land>>({});
   const [lands, setlands] = useState<any[]>([]);
   const contract = useWeb3Store((state) => state.contract);
-  const connectedAccount = useWeb3Store((state) => state.connectedAccount);
-  const myLands = useQuery(
-    ["lands", "my"],
+  useQuery(
+    ['lands', 'my'],
     async () => {
-      const lands = await contract?.paginateLands(6, 1);
-      return lands;
+      const serverLands = await contract?.paginateLands(6, 1);
+      return serverLands;
     },
     {
       onSuccess: (data) => {
-        console.log(data);
         setlands(
           data
             .map((land: any) => {
-              if (parseInt(JSON.parse(land.area)) == 0) {
+              if (parseInt(JSON.parse(land.area), 10) === 0) {
                 return null;
               }
               return land;
             })
-            .filter((land: any) => land != null)
+            .filter((land: any) => land != null),
         );
       },
-      onError: (err) => {
-        console.log(err);
-      },
-    }
+    },
   );
   return (
     <>
       <Wrap>
         {lands.map((land, i) => (
-          <>
             <WrapItem key={i}>
               <Card
                 land={land}
@@ -52,7 +46,6 @@ const Gallery: NextPage = () => {
                 }}
               />
             </WrapItem>
-          </>
         ))}
       </Wrap>
       <ViewDetail data={modalLand} isOpen={isOpen} onClose={onClose} />

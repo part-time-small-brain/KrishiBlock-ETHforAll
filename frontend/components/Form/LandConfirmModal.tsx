@@ -11,12 +11,12 @@ import {
   Button,
   Text,
   Code,
-} from "@chakra-ui/react";
-import { CancelledError, useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/router";
-import { FC, useEffect, useState } from "react";
-import useWeb3Store from "../../utils/web3store";
-import { ethers } from "ethers";
+} from '@chakra-ui/react';
+import { CancelledError, useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
+import { FC, useEffect, useState } from 'react';
+import useWeb3Store from '../../utils/web3store';
+import { ethers } from 'ethers';
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -34,15 +34,18 @@ export const LandConfirmModal: FC<{
   const contract = useWeb3Store((state) => state.contract);
   const mutation = useMutation(async () => {
     const txn = await contract?.addLand(
-      ["3.456456", "3453.45345", "345.4533", "3453.4353"],
+      ['3.456456', '3453.45345', '345.4533', '3453.4353'],
       data.area,
       data.address,
       data.price,
       data.pid,
       data.survey,
-      data.document
+      data.document,
+      {
+        gasLimit: 6000000
+      }
     );
-    console.log("Adding Land ....");
+    console.log('Adding Land ....');
     await txn.wait();
     setHash(txn.hash);
   });
@@ -52,9 +55,9 @@ export const LandConfirmModal: FC<{
   useEffect(() => {
     if (mutation.isError) {
       toast({
-        title: "Error",
-        description: "An error occured while adding land",
-        status: "error",
+        title: 'Error',
+        description: 'An error occured while adding land',
+        status: 'error',
         duration: 3000,
         isClosable: true,
       });
@@ -62,9 +65,9 @@ export const LandConfirmModal: FC<{
     }
     if (mutation.isSuccess) {
       toast({
-        title: "Land Added",
+        title: 'Land Added',
         description: `Land addition successful ${hash?.slice(0, 10)}`,
-        status: "success",
+        status: 'success',
         duration: 7000,
         isClosable: true,
       });
@@ -85,14 +88,14 @@ export const LandConfirmModal: FC<{
               rounded="xl"
               mt={2}
               variant="outline"
-              colorScheme={"yellow"}
+              colorScheme={'yellow'}
             >
               {JSON.stringify(data, null, 8)}
             </Code>
           </ModalBody>
           <ModalFooter>
             <Button
-              variant={"outline"}
+              variant={'outline'}
               colorScheme="red"
               mr={3}
               onClick={onClose}
@@ -100,7 +103,7 @@ export const LandConfirmModal: FC<{
               Go Back
             </Button>
             <Button
-              colorScheme={"green"}
+              colorScheme={'green'}
               onClick={confirmHandler}
               loadingText="Adding Land"
               isLoading={mutation.isLoading}

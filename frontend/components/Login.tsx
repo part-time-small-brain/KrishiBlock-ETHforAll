@@ -1,6 +1,6 @@
-import { useSwitchNetwork, useWeb3 } from "@3rdweb/hooks";
-import { AspectRatio, Button, Flex, Image, Text } from "@chakra-ui/react";
-import React from "react";
+import { useSwitchNetwork, useWeb3 } from '@3rdweb/hooks';
+import { AspectRatio, Button, Flex, Image, Text } from '@chakra-ui/react';
+import React from 'react';
 
 export default function Login() {
   const { address, chainId, connectWallet, disconnectWallet } = useWeb3();
@@ -12,7 +12,7 @@ export default function Login() {
         Current Status
       </Text>
       <Text>
-        <strong>ChainID:</strong> {chainId || "N/A"}
+        <strong>ChainID:</strong> {chainId || 'N/A'}
       </Text>
       <Text>
         <strong>Can Switch:</strong> {`${!!canAttemptSwitch}`}
@@ -21,17 +21,17 @@ export default function Login() {
         <strong>Connected:</strong> {`${!!address}`}
       </Text>
       <Text>
-        <strong>Wallet Address:</strong>{" "}
-        {address ? `${address.slice(0, 16)}...` : "N/A"}
+        <strong>Wallet Address:</strong>{' '}
+        {address ? `${address.slice(0, 16)}...` : 'N/A'}
       </Text>
 
       {address && (
         <Button
           onClick={disconnectWallet}
           mt="8px"
-          colorScheme={"yellow"}
+          colorScheme={'yellow'}
           bg="white"
-          w={"full"}
+          w={'full'}
         >
           Disconnect
         </Button>
@@ -52,8 +52,8 @@ export default function Login() {
         size="lg"
         bg="white"
         iconSpacing="auto"
-        colorScheme={"yellow"}
-        w={"full"}
+        colorScheme={'yellow'}
+        w={'full'}
         rightIcon={
           <AspectRatio ratio={1} w={6}>
             <Image
@@ -62,7 +62,7 @@ export default function Login() {
             />
           </AspectRatio>
         }
-        onClick={() => connectWallet("injected")}
+        onClick={() => connectWallet('injected')}
       >
         MetaMask
       </Button>

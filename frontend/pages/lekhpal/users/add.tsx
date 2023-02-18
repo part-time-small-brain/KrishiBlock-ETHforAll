@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { NextPage } from 'next';
 import {
   FormControl,
   FormLabel,
@@ -15,14 +15,14 @@ import {
   ModalHeader,
   ModalFooter,
   useDisclosure,
-} from "@chakra-ui/react";
-import { FC, HTMLInputTypeAttribute } from "react";
+} from '@chakra-ui/react';
+import { FC, HTMLInputTypeAttribute } from 'react';
 
 const AddLandInspector: NextPage = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
   return (
     <Box p={4}>
-      <VStack as={"form"} spacing={4} maxW="container.md">
+      <VStack as={'form'} spacing={4} maxW="container.md">
         <FormField
           name="Address"
           placeholder="Enter land owner's address"
@@ -32,7 +32,7 @@ const AddLandInspector: NextPage = () => {
         <FormField
           name="Age"
           placeholder="Enter age"
-          type={"number"}
+          type={'number'}
           isRequired
         />
         <FormField
@@ -46,7 +46,7 @@ const AddLandInspector: NextPage = () => {
             e.preventDefault();
             onOpen();
           }}
-          colorScheme={"yellow"}
+          colorScheme={'yellow'}
           minW="48"
         >
           Add
@@ -92,7 +92,7 @@ const FormField: FC<FormFieldProps> = ({
   return (
     <>
       <FormControl isRequired={isRequired} {...props}>
-        <FormLabel fontWeight={"bold"}>{name}</FormLabel>
+        <FormLabel fontWeight={'bold'}>{name}</FormLabel>
         <Input
           defaultValue={defaultValue}
           placeholder={placeholder}

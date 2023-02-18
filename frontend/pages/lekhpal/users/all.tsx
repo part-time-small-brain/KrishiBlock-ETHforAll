@@ -1,11 +1,11 @@
-import { NextPage } from "next";
+import { NextPage } from 'next';
 
 const AllLandInspectors: NextPage = () => {
     return (
         <>
             All Land Inspector
         </>
-    )
-}
+    );
+};
 
-export default AllLandInspectors
+export default AllLandInspectors;

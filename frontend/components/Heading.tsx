@@ -1,18 +1,18 @@
-import { Heading, Tooltip, useColorMode } from "@chakra-ui/react";
-import { FC } from "react";
+import { Heading, Tooltip, useColorMode } from '@chakra-ui/react';
+import { FC } from 'react';
 
 const KrishiHeading: FC<{
   sq?: number | string;
   textSize?: number | string;
-}> = ({ sq = "40px", textSize = undefined }) => {
+}> = ({ sq = '40px', textSize = undefined }) => {
   const { colorMode, toggleColorMode } = useColorMode();
   return (
     <Tooltip placement="auto" label="Click to see magic!!">
       <Heading
-        display={"inline-flex"}
+        display={'inline-flex'}
         alignItems="center"
-        fontFamily={"body"}
-        gap={"2"}
+        fontFamily={'body'}
+        gap={'2'}
         userSelect="none"
         onClick={toggleColorMode}
         fontSize={textSize}
@@ -20,7 +20,7 @@ const KrishiHeading: FC<{
         krishi
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          fill={"none"}
+          fill={'none'}
           viewBox="0 0 24 24"
           strokeWidth={1.5}
           stroke="currentColor"

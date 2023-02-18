@@ -1,5 +1,5 @@
-import { InputProps, FormControl, FormLabel, Input, FormErrorMessage } from "@chakra-ui/react";
-import { FC } from "react";
+import { InputProps, FormControl, FormLabel, Input, FormErrorMessage } from '@chakra-ui/react';
+import { FC } from 'react';
 
 export const FormField: FC<{
   name: string;
@@ -9,7 +9,7 @@ export const FormField: FC<{
 }> = ({ name, errorsObj, register, inputProps }) => {
   return (
     <FormControl isInvalid={!!errorsObj} isRequired>
-      <FormLabel textTransform={"capitalize"} fontWeight="bold">{name}</FormLabel>
+      <FormLabel textTransform={'capitalize'} fontWeight="bold">{name}</FormLabel>
       <Input
         {...inputProps}
         {...register(name, {

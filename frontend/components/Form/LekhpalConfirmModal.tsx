@@ -38,7 +38,7 @@ export const LekhpalConfirmModal: FC<{
       data.designation,
       data.city,
     );
-    console.log("Adding Lekhpal ....");
+    console.log('Adding Lekhpal ....');
     await txn.wait();
     setHash(txn.hash);
   });
@@ -48,9 +48,9 @@ export const LekhpalConfirmModal: FC<{
   useEffect(() => {
     if (mutation.isError) {
       toast({
-        title: "Error",
-        description: "An error occured while adding Lekhpal",
-        status: "error",
+        title: 'Error',
+        description: 'An error occured while adding Lekhpal',
+        status: 'error',
         duration: 3000,
         isClosable: true,
       });
@@ -58,9 +58,9 @@ export const LekhpalConfirmModal: FC<{
     }
     if (mutation.isSuccess) {
       toast({
-        title: "Lekhpal Added",
+        title: 'Lekhpal Added',
         description: `successful ${hash?.slice(0, 15)}...`,
-        status: "success",
+        status: 'success',
         duration: 7000,
         isClosable: true,
       });
@@ -81,14 +81,14 @@ export const LekhpalConfirmModal: FC<{
               rounded="xl"
               mt={2}
               variant="outline"
-              colorScheme={"yellow"}
+              colorScheme={'yellow'}
             >
               {JSON.stringify(data, null, 8)}
             </Code>
           </ModalBody>
           <ModalFooter>
             <Button
-              variant={"outline"}
+              variant={'outline'}
               colorScheme="red"
               mr={3}
               onClick={onClose}
@@ -96,7 +96,7 @@ export const LekhpalConfirmModal: FC<{
               Go Back
             </Button>
             <Button
-              colorScheme={"green"}
+              colorScheme={'green'}
               onClick={confirmHandler}
               loadingText="Adding Lekhpal"
               isLoading={mutation.isLoading}

@@ -8,12 +8,12 @@ import {
   VStack,
   Wrap,
   WrapItem,
-} from "@chakra-ui/react";
-import { Query, useMutation, useQuery } from "@tanstack/react-query";
-import { NextPage } from "next";
-import { FC, useState } from "react";
-import shallow from "zustand/shallow";
-import useWeb3Store from "../../../utils/web3store";
+} from '@chakra-ui/react';
+import { Query, useMutation, useQuery } from '@tanstack/react-query';
+import { NextPage } from 'next';
+import { FC, useState } from 'react';
+import shallow from 'zustand/shallow';
+import useWeb3Store from '../../../utils/web3store';
 
 const AllLandInspectors: NextPage = () => {
   const [tehsildars, setTehsildars] = useState<any>([]);
@@ -22,7 +22,7 @@ const AllLandInspectors: NextPage = () => {
     shallow
   );
   const query = useQuery(
-    ["tehsildar"],
+    ['tehsildar'],
     async () => {
       const tehsildars = await contract?.getTehsildarList();
       return tehsildars;
@@ -49,10 +49,10 @@ const AllLandInspectors: NextPage = () => {
 
 const TehsilCard: FC<{ address: string; refetch: () => void }> = ({ address, refetch }) => {
   const [tehsildar, setTehsildar] = useState<any>({
-    name: "Tehsildar",
-    address: "some random addresss",
+    name: 'Tehsildar',
+    address: 'some random addresss',
     age: 20,
-    tehsil: "hello",
+    tehsil: 'hello',
   });
   const contract = useWeb3Store((state) => state.contract);
   const [activeTehsildar, setActiveTehsildar] = useState<string>();
@@ -66,9 +66,9 @@ const TehsilCard: FC<{ address: string; refetch: () => void }> = ({ address, ref
     {
       onSuccess: (data) => {
         toast({
-          title: "Tehsildar Removed",
-          description: `Tehsildar removed successfully`,
-          status: "success",
+          title: 'Tehsildar Removed',
+          description: 'Tehsildar removed successfully',
+          status: 'success',
           duration: 5000,
           isClosable: true,
         });
@@ -76,9 +76,9 @@ const TehsilCard: FC<{ address: string; refetch: () => void }> = ({ address, ref
       },
       onError: (err) => {
         toast({
-          title: "Error",
-          description: `Error removing tehsildar`,
-          status: "error",
+          title: 'Error',
+          description: 'Error removing tehsildar',
+          status: 'error',
           duration: 5000,
           isClosable: true,
         });
@@ -86,32 +86,32 @@ const TehsilCard: FC<{ address: string; refetch: () => void }> = ({ address, ref
     }
   );
   const getTehsildar = useQuery(
-    ["tehsildar", address],
+    ['tehsildar', address],
     async () => {
       const tehsildar = await contract?.tehsildarMapping(address);
       return tehsildar;
     },
     {
       onSuccess: (data) => {
-        console.log(data)
+        console.log(data);
         setTehsildar(data);
       },
     }
   );
   if (getTehsildar.isLoading || getTehsildar.isInitialLoading) return <Box>Loading {address}</Box>;
   return (
-    <Box minH={16} w={"300px"}>
+    <Box minH={16} w={'300px'}>
       <HStack>
-        <Text textTransform={"capitalize"} fontSize="3xl">
+        <Text textTransform={'capitalize'} fontSize="3xl">
           {tehsildar.name}, {JSON.parse(tehsildar.age)}
         </Text>
       </HStack>
-      <VStack alignItems={"start"}>
-        <Text fontSize={"sm"}>{tehsildar[0] && tehsildar[0].slice(0, 25)}...</Text>
-        <Text fontSize={"lg"} textTransform={"capitalize"}>
+      <VStack alignItems={'start'}>
+        <Text fontSize={'sm'}>{tehsildar[0] && tehsildar[0].slice(0, 25)}...</Text>
+        <Text fontSize={'lg'} textTransform={'capitalize'}>
           {tehsildar.tehsil}
         </Text>
-        <Button w="full" colorScheme={"red"} variant="outline" onClick={() => removeTehsildar.mutate()}>
+        <Button w="full" colorScheme={'red'} variant="outline" onClick={() => removeTehsildar.mutate()}>
           remove
         </Button>
       </VStack>

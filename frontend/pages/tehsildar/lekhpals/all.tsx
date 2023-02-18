@@ -14,13 +14,13 @@ import {
   VStack,
   Wrap,
   WrapItem,
-} from "@chakra-ui/react";
-import { useMutation, useQuery } from "@tanstack/react-query";
-import { NextPage } from "next";
-import { FC, useState } from "react";
-import shallow from "zustand/shallow";
+} from '@chakra-ui/react';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import { NextPage } from 'next';
+import { FC, useState } from 'react';
+import shallow from 'zustand/shallow';
 
-import useWeb3Store from "../../../utils/web3store";
+import useWeb3Store from '../../../utils/web3store';
 
 const AllLandInspectors: NextPage = () => {
   const [addresses, setAddresses] = useState<Array<string>>([]);
@@ -30,9 +30,9 @@ const AllLandInspectors: NextPage = () => {
   );
   const toast = useToast();
   const query = useQuery(
-    ["getLekhpal"],
+    ['getLekhpal'],
     async () => {
-      console.log("tryna query getlekhpal");
+      console.log('tryna query getlekhpal');
       const data = await contract?.getLekhpalList();
       return data;
     },
@@ -42,10 +42,10 @@ const AllLandInspectors: NextPage = () => {
       },
       onError: (err) => {
         toast({
-          title: "Error",
-          description: "Couldn't fetch data",
+          title: 'Error',
+          description: 'Couldn\'t fetch data',
           duration: 1000,
-          status: "error",
+          status: 'error',
           isClosable: true,
         });
       },
@@ -69,9 +69,9 @@ const Lekh: FC<{ address: string; refetch: () => void }> = ({
   refetch,
 }) => {
   const [lekhpal, setLekhpal] = useState<any>({
-    name: "Tehsildar",
-    address: "some random addresss",
-    designation: "hello",
+    name: 'Tehsildar',
+    address: 'some random addresss',
+    designation: 'hello',
   });
   const contract = useWeb3Store((state) => state.contract);
   const toast = useToast();
@@ -84,9 +84,9 @@ const Lekh: FC<{ address: string; refetch: () => void }> = ({
     {
       onSuccess: (data) => {
         toast({
-          title: "Lekhpal Removed",
-          description: `Lekhpal removed successfully`,
-          status: "success",
+          title: 'Lekhpal Removed',
+          description: 'Lekhpal removed successfully',
+          status: 'success',
           duration: 5000,
           isClosable: true,
         });
@@ -94,9 +94,9 @@ const Lekh: FC<{ address: string; refetch: () => void }> = ({
       },
       onError: (err) => {
         toast({
-          title: "Error",
-          description: `Error removing Lekhpal`,
-          status: "error",
+          title: 'Error',
+          description: 'Error removing Lekhpal',
+          status: 'error',
           duration: 5000,
           isClosable: true,
         });
@@ -104,7 +104,7 @@ const Lekh: FC<{ address: string; refetch: () => void }> = ({
     }
   );
   const getLekhpal = useQuery(
-    ["lekhpal", address],
+    ['lekhpal', address],
     async () => {
       const tehsildar = await contract?.lekhpalMapping(address);
       return tehsildar;
@@ -119,23 +119,23 @@ const Lekh: FC<{ address: string; refetch: () => void }> = ({
   if (getLekhpal.isLoading || getLekhpal.isInitialLoading)
     return <Box>Loading {address}</Box>;
   return (
-    <Box minH={16} w={"300px"}>
+    <Box minH={16} w={'300px'}>
       <HStack>
-        <Text textTransform={"capitalize"} fontSize="3xl">
+        <Text textTransform={'capitalize'} fontSize="3xl">
           {lekhpal.name}
         </Text>
       </HStack>
-      <VStack alignItems={"start"}>
-        <Text fontSize={"sm"}>{address.slice(0, 25)}...</Text>
-        <Text fontSize={"lg"} textTransform={"capitalize"}>
+      <VStack alignItems={'start'}>
+        <Text fontSize={'sm'}>{address.slice(0, 25)}...</Text>
+        <Text fontSize={'lg'} textTransform={'capitalize'}>
           {lekhpal.designation}
         </Text>
-        <Text fontSize={"lg"} textTransform={"capitalize"}>
+        <Text fontSize={'lg'} textTransform={'capitalize'}>
           {lekhpal.city}
         </Text>
         <Button
           w="full"
-          colorScheme={"red"}
+          colorScheme={'red'}
           variant="outline"
           onClick={() => removeLekhpal.mutate()}
         >

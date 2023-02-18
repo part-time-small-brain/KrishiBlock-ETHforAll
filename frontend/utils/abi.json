@@ -1,39 +1,4 @@
 [
-  { "inputs": [], "stateMutability": "nonpayable", "type": "constructor" },
-  {
-    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "name": "AllUsers",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "address", "name": "", "type": "address" },
-      { "internalType": "uint256", "name": "", "type": "uint256" }
-    ],
-    "name": "MyLands",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "name": "UserMapping",
-    "outputs": [
-      { "internalType": "address", "name": "id", "type": "address" },
-      { "internalType": "string", "name": "name", "type": "string" },
-      { "internalType": "uint256", "name": "age", "type": "uint256" },
-      { "internalType": "string", "name": "city", "type": "string" },
-      { "internalType": "string", "name": "aadharNumber", "type": "string" },
-      { "internalType": "string", "name": "panNumber", "type": "string" },
-      { "internalType": "string", "name": "document", "type": "string" },
-      { "internalType": "string", "name": "email", "type": "string" },
-      { "internalType": "bool", "name": "isUserVerified", "type": "bool" }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
   {
     "inputs": [
       {
@@ -41,12 +6,36 @@
         "name": "_coordinates",
         "type": "string[]"
       },
-      { "internalType": "uint256", "name": "_area", "type": "uint256" },
-      { "internalType": "string", "name": "_address", "type": "string" },
-      { "internalType": "uint256", "name": "landPrice", "type": "uint256" },
-      { "internalType": "uint256", "name": "_propertyPID", "type": "uint256" },
-      { "internalType": "string", "name": "_surveyNum", "type": "string" },
-      { "internalType": "string", "name": "_document", "type": "string" }
+      {
+        "internalType": "uint256",
+        "name": "_area",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_address",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "landPrice",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_propertyPID",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_surveyNum",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_document",
+        "type": "string"
+      }
     ],
     "name": "addLand",
     "outputs": [],
@@ -55,52 +44,84 @@
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_addr", "type": "address" },
-      { "internalType": "string", "name": "_name", "type": "string" },
-      { "internalType": "uint256", "name": "_age", "type": "uint256" },
-      { "internalType": "string", "name": "_designation", "type": "string" },
-      { "internalType": "string", "name": "_city", "type": "string" }
+      {
+        "internalType": "address",
+        "name": "_addr",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_age",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_designation",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_city",
+        "type": "string"
+      }
     ],
     "name": "addLekhpal",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_addr", "type": "address" },
-      { "internalType": "string", "name": "_name", "type": "string" },
-      { "internalType": "uint256", "name": "_age", "type": "uint256" },
-      { "internalType": "string", "name": "_tehsil", "type": "string" }
+      {
+        "internalType": "address",
+        "name": "_addr",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "_name",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_age",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_tehsil",
+        "type": "string"
+      }
     ],
     "name": "addTehsildar",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
     "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "", "type": "uint256" },
-      { "internalType": "uint256", "name": "", "type": "uint256" }
-    ],
-    "name": "allLandList",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "uint256", "name": "", "type": "uint256" },
-      { "internalType": "uint256", "name": "", "type": "uint256" }
-    ],
-    "name": "allUsersList",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "address", "name": "_addr", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "_addr",
+        "type": "address"
+      }
     ],
     "name": "changeSDM",
     "outputs": [],
@@ -109,171 +130,153 @@
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "_id", "type": "uint256" },
-      { "internalType": "uint256", "name": "_ownerNum", "type": "uint256" }
-    ],
-    "name": "checkPastOwner",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getLekhpalList",
-    "outputs": [
-      { "internalType": "address[]", "name": "", "type": "address[]" }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "uint256", "name": "_id", "type": "uint256" }],
-    "name": "getPastOwners",
-    "outputs": [
-      { "internalType": "address[]", "name": "", "type": "address[]" }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getTehsildarList",
-    "outputs": [
-      { "internalType": "address[]", "name": "", "type": "address[]" }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getUnverifiedLands",
-    "outputs": [
-      { "internalType": "uint256[]", "name": "", "type": "uint256[]" }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "getUnverifiedUsers",
-    "outputs": [
-      { "internalType": "address[]", "name": "", "type": "address[]" }
-    ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "uint256", "name": "_id", "type": "uint256" }],
-    "name": "getcoordinates",
-    "outputs": [{ "internalType": "string[]", "name": "", "type": "string[]" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "uint256", "name": "id", "type": "uint256" }],
-    "name": "isLandVerified",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "address", "name": "_addr", "type": "address" }
-    ],
-    "name": "isLekhpal",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "address", "name": "_addr", "type": "address" }
-    ],
-    "name": "isSDM",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "address", "name": "_addr", "type": "address" }
-    ],
-    "name": "isTehsildar",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [
-      { "internalType": "address", "name": "_addr", "type": "address" }
-    ],
-    "name": "isUserRegistered",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "address", "name": "id", "type": "address" }],
-    "name": "isUserVerified",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "name": "lands",
-    "outputs": [
-      { "internalType": "uint256", "name": "id", "type": "uint256" },
-      { "internalType": "uint256", "name": "area", "type": "uint256" },
-      { "internalType": "string", "name": "landAddress", "type": "string" },
-      { "internalType": "uint256", "name": "landPrice", "type": "uint256" },
-      { "internalType": "uint256", "name": "propertyPID", "type": "uint256" },
       {
         "internalType": "string",
-        "name": "physicalSurveyNumber",
+        "name": "_name",
         "type": "string"
       },
-      { "internalType": "string", "name": "document", "type": "string" },
-      { "internalType": "bool", "name": "isforSell", "type": "bool" },
-      { "internalType": "address", "name": "ownerAddress", "type": "address" },
-      { "internalType": "bool", "name": "isLandVerified", "type": "bool" }
+      {
+        "internalType": "uint256",
+        "name": "_age",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "_city",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_aadharNumber",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_panNumber",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_document",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "_email",
+        "type": "string"
+      }
     ],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "landsCount",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [],
-    "name": "lekhpalCount",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
+    "name": "registerUser",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "uint256", "name": "", "type": "uint256" },
-      { "internalType": "uint256", "name": "", "type": "uint256" }
+      {
+        "internalType": "address",
+        "name": "_addr",
+        "type": "address"
+      }
     ],
-    "name": "lekhpalList",
-    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "stateMutability": "view",
+    "name": "removeLekhpal",
+    "outputs": [],
+    "stateMutability": "nonpayable",
     "type": "function"
   },
   {
-    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "name": "lekhpalMapping",
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_addr",
+        "type": "address"
+      }
+    ],
+    "name": "removeTehsildar",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_from",
+        "type": "address"
+      },
+      {
+        "internalType": "address",
+        "name": "_to",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      }
+    ],
+    "name": "transferOwnership",
     "outputs": [
-      { "internalType": "address", "name": "_addr", "type": "address" },
-      { "internalType": "string", "name": "name", "type": "string" },
-      { "internalType": "uint256", "name": "age", "type": "uint256" },
-      { "internalType": "string", "name": "designation", "type": "string" },
-      { "internalType": "string", "name": "city", "type": "string" }
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      }
+    ],
+    "name": "verifyLand",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_userAddr",
+        "type": "address"
+      }
+    ],
+    "name": "verifyUser",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "allLandList",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
     "stateMutability": "view",
     "type": "function"
@@ -282,19 +285,120 @@
     "inputs": [
       {
         "internalType": "uint256",
-        "name": "_resultsPerPage",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "AllUsers",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
         "type": "uint256"
       },
-      { "internalType": "uint256", "name": "_page", "type": "uint256" }
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
-    "name": "paginateLands",
+    "name": "allUsersList",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_ownerNum",
+        "type": "uint256"
+      }
+    ],
+    "name": "checkPastOwner",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      }
+    ],
+    "name": "getcoordinates",
+    "outputs": [
+      {
+        "internalType": "string[]",
+        "name": "",
+        "type": "string[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_addr",
+        "type": "address"
+      }
+    ],
+    "name": "getlands",
     "outputs": [
       {
         "components": [
-          { "internalType": "uint256", "name": "id", "type": "uint256" },
-          { "internalType": "uint256", "name": "area", "type": "uint256" },
-          { "internalType": "string", "name": "landAddress", "type": "string" },
-          { "internalType": "uint256", "name": "landPrice", "type": "uint256" },
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "area",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "landAddress",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "landPrice",
+            "type": "uint256"
+          },
           {
             "internalType": "string[]",
             "name": "allLatitudeLongitude",
@@ -310,14 +414,26 @@
             "name": "physicalSurveyNumber",
             "type": "string"
           },
-          { "internalType": "string", "name": "document", "type": "string" },
-          { "internalType": "bool", "name": "isforSell", "type": "bool" },
+          {
+            "internalType": "string",
+            "name": "document",
+            "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "isforSell",
+            "type": "bool"
+          },
           {
             "internalType": "address",
             "name": "ownerAddress",
             "type": "address"
           },
-          { "internalType": "bool", "name": "isLandVerified", "type": "bool" },
+          {
+            "internalType": "bool",
+            "name": "isLandVerified",
+            "type": "bool"
+          },
           {
             "internalType": "address[]",
             "name": "pastOwners",
@@ -333,89 +449,570 @@
     "type": "function"
   },
   {
-    "inputs": [
-      { "internalType": "string", "name": "_name", "type": "string" },
-      { "internalType": "uint256", "name": "_age", "type": "uint256" },
-      { "internalType": "string", "name": "_city", "type": "string" },
-      { "internalType": "string", "name": "_aadharNumber", "type": "string" },
-      { "internalType": "string", "name": "_panNumber", "type": "string" },
-      { "internalType": "string", "name": "_document", "type": "string" },
-      { "internalType": "string", "name": "_email", "type": "string" }
+    "inputs": [],
+    "name": "getLekhpalList",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
     ],
-    "name": "registerUser",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_addr", "type": "address" }
+      {
+        "internalType": "uint256",
+        "name": "_id",
+        "type": "uint256"
+      }
     ],
-    "name": "removeLekhpal",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "name": "getPastOwners",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getTehsildarList",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getUnverifiedLands",
+    "outputs": [
+      {
+        "internalType": "uint256[]",
+        "name": "",
+        "type": "uint256[]"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "getUnverifiedUsers",
+    "outputs": [
+      {
+        "internalType": "address[]",
+        "name": "",
+        "type": "address[]"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_addr", "type": "address" }
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      }
     ],
-    "name": "removeTehsildar",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "name": "isLandVerified",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_addr",
+        "type": "address"
+      }
+    ],
+    "name": "isLekhpal",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_addr",
+        "type": "address"
+      }
+    ],
+    "name": "isSDM",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_addr",
+        "type": "address"
+      }
+    ],
+    "name": "isTehsildar",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_addr",
+        "type": "address"
+      }
+    ],
+    "name": "isUserRegistered",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "id",
+        "type": "address"
+      }
+    ],
+    "name": "isUserVerified",
+    "outputs": [
+      {
+        "internalType": "bool",
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "lands",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "id",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "area",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "landAddress",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "landPrice",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "propertyPID",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "physicalSurveyNumber",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "document",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "isforSell",
+        "type": "bool"
+      },
+      {
+        "internalType": "address",
+        "name": "ownerAddress",
+        "type": "address"
+      },
+      {
+        "internalType": "bool",
+        "name": "isLandVerified",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "landsCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "lekhpalCount",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "lekhpalList",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
+    ],
+    "name": "lekhpalMapping",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "_addr",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "age",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "designation",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "city",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      },
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "name": "MyLands",
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      {
+        "internalType": "uint256",
+        "name": "_resultsPerPage",
+        "type": "uint256"
+      },
+      {
+        "internalType": "uint256",
+        "name": "_page",
+        "type": "uint256"
+      }
+    ],
+    "name": "paginateLands",
+    "outputs": [
+      {
+        "components": [
+          {
+            "internalType": "uint256",
+            "name": "id",
+            "type": "uint256"
+          },
+          {
+            "internalType": "uint256",
+            "name": "area",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "landAddress",
+            "type": "string"
+          },
+          {
+            "internalType": "uint256",
+            "name": "landPrice",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string[]",
+            "name": "allLatitudeLongitude",
+            "type": "string[]"
+          },
+          {
+            "internalType": "uint256",
+            "name": "propertyPID",
+            "type": "uint256"
+          },
+          {
+            "internalType": "string",
+            "name": "physicalSurveyNumber",
+            "type": "string"
+          },
+          {
+            "internalType": "string",
+            "name": "document",
+            "type": "string"
+          },
+          {
+            "internalType": "bool",
+            "name": "isforSell",
+            "type": "bool"
+          },
+          {
+            "internalType": "address",
+            "name": "ownerAddress",
+            "type": "address"
+          },
+          {
+            "internalType": "bool",
+            "name": "isLandVerified",
+            "type": "bool"
+          },
+          {
+            "internalType": "address[]",
+            "name": "pastOwners",
+            "type": "address[]"
+          }
+        ],
+        "internalType": "struct Land.Landreg[]",
+        "name": "",
+        "type": "tuple[]"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "tehsildarCount",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
-    "stateMutability": "view",
-    "type": "function"
-  },
-  {
-    "inputs": [{ "internalType": "address", "name": "", "type": "address" }],
-    "name": "tehsildarMapping",
     "outputs": [
-      { "internalType": "address", "name": "_addr", "type": "address" },
-      { "internalType": "string", "name": "name", "type": "string" },
-      { "internalType": "uint256", "name": "age", "type": "uint256" },
-      { "internalType": "string", "name": "tehsil", "type": "string" }
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
     ],
     "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [
-      { "internalType": "address", "name": "_from", "type": "address" },
-      { "internalType": "address", "name": "_to", "type": "address" },
-      { "internalType": "uint256", "name": "_id", "type": "uint256" }
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
-    "name": "transferOwnership",
-    "outputs": [{ "internalType": "bool", "name": "", "type": "bool" }],
-    "stateMutability": "nonpayable",
+    "name": "tehsildarMapping",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "_addr",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "age",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "tehsil",
+        "type": "string"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   },
   {
     "inputs": [],
     "name": "userCount",
-    "outputs": [{ "internalType": "uint256", "name": "", "type": "uint256" }],
+    "outputs": [
+      {
+        "internalType": "uint256",
+        "name": "",
+        "type": "uint256"
+      }
+    ],
     "stateMutability": "view",
     "type": "function"
   },
   {
-    "inputs": [{ "internalType": "uint256", "name": "_id", "type": "uint256" }],
-    "name": "verifyLand",
-    "outputs": [],
-    "stateMutability": "nonpayable",
-    "type": "function"
-  },
-  {
     "inputs": [
-      { "internalType": "address", "name": "_userAddr", "type": "address" }
+      {
+        "internalType": "address",
+        "name": "",
+        "type": "address"
+      }
     ],
-    "name": "verifyUser",
-    "outputs": [],
-    "stateMutability": "nonpayable",
+    "name": "UserMapping",
+    "outputs": [
+      {
+        "internalType": "address",
+        "name": "id",
+        "type": "address"
+      },
+      {
+        "internalType": "string",
+        "name": "name",
+        "type": "string"
+      },
+      {
+        "internalType": "uint256",
+        "name": "age",
+        "type": "uint256"
+      },
+      {
+        "internalType": "string",
+        "name": "city",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "aadharNumber",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "panNumber",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "document",
+        "type": "string"
+      },
+      {
+        "internalType": "string",
+        "name": "email",
+        "type": "string"
+      },
+      {
+        "internalType": "bool",
+        "name": "isUserVerified",
+        "type": "bool"
+      }
+    ],
+    "stateMutability": "view",
     "type": "function"
   }
 ]

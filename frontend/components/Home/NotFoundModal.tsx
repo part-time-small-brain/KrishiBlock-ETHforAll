@@ -12,10 +12,10 @@ import {
   RadioGroup,
   Stack,
   Text,
-} from "@chakra-ui/react";
-import { FC, useCallback, useEffect, useState } from "react";
-import useUserStore from "../../utils/store";
-import { ConnectWallet } from "./ConnectWallet";
+} from '@chakra-ui/react';
+import { FC, useCallback, useEffect, useState } from 'react';
+import useUserStore from '../../utils/store';
+import { ConnectWallet } from './ConnectWallet';
 
 interface AdminModalProps {
   isOpen: boolean;
@@ -23,7 +23,7 @@ interface AdminModalProps {
 }
 
 export const NotFoundModal: FC<AdminModalProps> = ({ isOpen, onClose }) => {
-  const [value, setValue] = useState<usertype | string>("1");
+  const [value, setValue] = useState<usertype | string>('1');
   const setUserType = useUserStore((state) => state.setUserType);
   return (
     <>
@@ -58,7 +58,7 @@ export const NotFoundModal: FC<AdminModalProps> = ({ isOpen, onClose }) => {
                 setUserType(value as usertype);
                 onClose();
               }}
-              rounded={"full"}
+              rounded={'full'}
             >
               Confirm
             </Button>

@@ -10,11 +10,11 @@ import {
   Button,
   Text,
   Code,
-} from "@chakra-ui/react";
-import { useMutation } from "@tanstack/react-query";
-import { useRouter } from "next/router";
-import { FC, useEffect, useState } from "react";
-import useWeb3Store from "../../utils/web3store";
+} from '@chakra-ui/react';
+import { useMutation } from '@tanstack/react-query';
+import { useRouter } from 'next/router';
+import { FC, useEffect, useState } from 'react';
+import useWeb3Store from '../../utils/web3store';
 
 function sleep(ms: number) {
   return new Promise((resolve) => setTimeout(resolve, ms));
@@ -39,7 +39,7 @@ export const UserConfirmModal: FC<{
       data.document,
       data.email
     );
-    console.log("Registering User....");
+    console.log('Registering User....');
     await txn.wait();
     setHash(txn.hash);
   });
@@ -49,23 +49,23 @@ export const UserConfirmModal: FC<{
   useEffect(() => {
     if (mutation.isError) {
       toast({
-        title: "Error",
-        description: "An error occured while registering user",
-        status: "error",
+        title: 'Error',
+        description: 'An error occured while registering user',
+        status: 'error',
         duration: 3000,
         isClosable: true,
       });
     }
     if (mutation.isSuccess) {
       toast({
-        title: "User Created",
+        title: 'User Created',
         description: `User creation successful ${hash?.slice(0, 10)}`,
-        status: "success",
+        status: 'success',
         duration: 7000,
         isClosable: true,
       });
       onClose();
-      router.push("/user");
+      router.push('/user');
     }
   }, [mutation.isSuccess, hash]);
   return (
@@ -81,7 +81,7 @@ export const UserConfirmModal: FC<{
           </ModalBody>
           <ModalFooter>
             <Button
-              variant={"outline"}
+              variant={'outline'}
               colorScheme="red"
               mr={3}
               onClick={onClose}
@@ -89,7 +89,7 @@ export const UserConfirmModal: FC<{
               Go Back
             </Button>
             <Button
-              colorScheme={"green"}
+              colorScheme={'green'}
               onClick={confirmHandler}
               loadingText="Submitting"
               isLoading={mutation.isLoading}

@@ -38,9 +38,9 @@ const VerifyUser: NextPage = () => {
   const contract = useWeb3Store((state) => state.contract);
   const toast = useToast();
   const query = useQuery(
-    ["getUnverifiedUsers"],
+    ['getUnverifiedUsers'],
     async () => {
-      console.log("tryna query unverified users");
+      console.log('tryna query unverified users');
       const unverifiedUsers = await contract?.getUnverifiedUsers();
       return unverifiedUsers;
     },
@@ -48,17 +48,17 @@ const VerifyUser: NextPage = () => {
       onSuccess: (data) => {
         if (
           (data as Array<any>)[0] ===
-          "0x0000000000000000000000000000000000000000"
+          '0x0000000000000000000000000000000000000000'
         )
           setEmptyList(true);
         setUsers(data);
       },
       onError: (err) => {
         toast({
-          title: "Error",
-          description: "Couldn't fetch data",
+          title: 'Error',
+          description: 'Couldn\'t fetch data',
           duration: 1000,
-          status: "error",
+          status: 'error',
           isClosable: true,
         });
       },
@@ -150,28 +150,28 @@ export const VerifyUserModal: FC<{
   const verifyMutation = useMutation(
     async () => {
       const tx = await contract?.verifyUser(address);
-      console.log("Verifying user ", address);
+      console.log('Verifying user ', address);
       await tx.wait();
       return tx.hash;
     },
     {
       onSuccess: (data) => {
         toast({
-          title: "Success",
+          title: 'Success',
           description: `User verified ${data.slice(0, 10)}`,
           duration: 1000,
-          status: "success",
+          status: 'success',
           isClosable: true,
         });
-        queryClient.refetchQueries(["getUnverifiedUsers"]);
+        queryClient.refetchQueries(['getUnverifiedUsers']);
         onClose();
       },
       onError: () => {
         toast({
-          title: "Error",
-          description: "Couldn't load user info",
+          title: 'Error',
+          description: 'Couldn\'t load user info',
           duration: 3000,
-          status: "error",
+          status: 'error',
         });
         onClose();
       },
@@ -201,7 +201,7 @@ export const VerifyUserModal: FC<{
               onClick={() => {
                 verifyMutation.mutate();
               }}
-              rounded={"full"}
+              rounded={'full'}
               isLoading={verifyMutation.isLoading}
               loadingText="Verifying User"
             >

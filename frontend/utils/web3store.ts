@@ -1,6 +1,6 @@
-import { ethers } from "ethers";
-import create from "zustand";
-import { devtools } from "zustand/middleware";
+import { ethers } from 'ethers';
+import create from 'zustand';
+import { devtools } from 'zustand/middleware';
 
 interface Web3State {
   isInstalledWallet: boolean;

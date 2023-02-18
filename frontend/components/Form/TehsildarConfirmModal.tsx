@@ -37,7 +37,7 @@ export const TehsildarConfirmModal: FC<{
       data.age,
       data.tehsil,
     );
-    console.log("Adding Tehsildar ....");
+    console.log('Adding Tehsildar ....');
     await txn.wait();
     setHash(txn.hash);
   });
@@ -47,9 +47,9 @@ export const TehsildarConfirmModal: FC<{
   useEffect(() => {
     if (mutation.isError) {
       toast({
-        title: "Error",
-        description: "An error occured while adding Tehsildar",
-        status: "error",
+        title: 'Error',
+        description: 'An error occured while adding Tehsildar',
+        status: 'error',
         duration: 3000,
         isClosable: true,
       });
@@ -57,9 +57,9 @@ export const TehsildarConfirmModal: FC<{
     }
     if (mutation.isSuccess) {
       toast({
-        title: "Tehsildar Added",
+        title: 'Tehsildar Added',
         description: `successful ${hash?.slice(0, 15)}...`,
-        status: "success",
+        status: 'success',
         duration: 7000,
         isClosable: true,
       });
@@ -80,14 +80,14 @@ export const TehsildarConfirmModal: FC<{
               rounded="xl"
               mt={2}
               variant="outline"
-              colorScheme={"yellow"}
+              colorScheme={'yellow'}
             >
               {JSON.stringify(data, null, 8)}
             </Code>
           </ModalBody>
           <ModalFooter>
             <Button
-              variant={"outline"}
+              variant={'outline'}
               colorScheme="red"
               mr={3}
               onClick={onClose}
@@ -95,7 +95,7 @@ export const TehsildarConfirmModal: FC<{
               Go Back
             </Button>
             <Button
-              colorScheme={"green"}
+              colorScheme={'green'}
               onClick={confirmHandler}
               loadingText="Adding Tehsildar"
               isLoading={mutation.isLoading}

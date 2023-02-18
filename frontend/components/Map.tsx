@@ -1,14 +1,14 @@
-import { DrawEvents, Events, latLng, LatLngTuple, Polygon } from "leaflet";
-import { useState } from "react";
+import { DrawEvents, Events, latLng, LatLngTuple, Polygon } from 'leaflet';
+import { useState } from 'react';
 import {
   MapContainer,
   TileLayer,
   Marker,
   Popup,
   FeatureGroup,
-} from "react-leaflet";
-import { EditControl } from "react-leaflet-draw";
-import "leaflet-draw/dist/leaflet.draw.css";
+} from 'react-leaflet';
+import { EditControl } from 'react-leaflet-draw';
+import 'leaflet-draw/dist/leaflet.draw.css';
 
 const Map = () => {
   const [position, setPosition] = useState<LatLngTuple>([28.6542, 77.2373]);
@@ -20,7 +20,7 @@ const Map = () => {
   >([]);
   const _onCreated = (e: DrawEvents.Created) => {
     const { layerType } = e;
-    if (layerType === "polygon") {
+    if (layerType === 'polygon') {
       const { _leaflet_id, _latlngs } = e.layer as any;
       setMapLayers((mapLayers) => [
         ...mapLayers,
@@ -38,7 +38,7 @@ const Map = () => {
       zoom={15}
       scrollWheelZoom={true}
       style={{
-        height: "100%",
+        height: '100%',
       }}
     >
       <FeatureGroup>

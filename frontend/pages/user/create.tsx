@@ -32,7 +32,7 @@ const Auth: NextPage = () => {
         />
         <FormField
           name="email"
-          inputProps={{ type: "email" }}
+          inputProps={{ type: 'email' }}
           errorsObj={errors.name}
           register={register}
         />
@@ -42,7 +42,7 @@ const Auth: NextPage = () => {
             setData(formData);
             confirmOnOpen();
           })}
-          colorScheme={"yellow"}
+          colorScheme={'yellow'}
           minW="48"
         >
           Add

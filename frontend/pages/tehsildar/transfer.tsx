@@ -1,9 +1,9 @@
-import { Box, Button, useDisclosure, VStack } from "@chakra-ui/react";
-import { NextPage } from "next";
-import { useState } from "react";
-import { useForm } from "react-hook-form";
+import { Box, Button, useDisclosure, VStack } from '@chakra-ui/react';
+import { NextPage } from 'next';
+import { useState } from 'react';
+import { useForm } from 'react-hook-form';
 
-import { FormField, TransferConfirmModal } from "../../components/Form";
+import { FormField, TransferConfirmModal } from '../../components/Form';
 
 const TransferOwnership: NextPage = () => {
   const {
@@ -19,22 +19,22 @@ const TransferOwnership: NextPage = () => {
   const [data, setData] = useState<any>();
   return (
     <Box p={4}>
-      <VStack spacing={4} maxW="container.md" fontSize={"sm"}>
+      <VStack spacing={4} maxW="container.md" fontSize={'sm'}>
         <FormField
           name="from"
-          inputProps={{ placeholder: "From Address" }}
+          inputProps={{ placeholder: 'From Address' }}
           errorsObj={errors.from}
           register={register}
         />
         <FormField
           name="to"
-          inputProps={{ placeholder: "To Address" }}
+          inputProps={{ placeholder: 'To Address' }}
           errorsObj={errors.to}
           register={register}
         />
         <FormField
           name="id"
-          inputProps={{ type: "number", placeholder: "ID" }}
+          inputProps={{ type: 'number', placeholder: 'ID' }}
           errorsObj={errors.id}
           register={register}
         />
@@ -43,7 +43,7 @@ const TransferOwnership: NextPage = () => {
             setData(formData);
             confirmOnOpen();
           })}
-          colorScheme={"yellow"}
+          colorScheme={'yellow'}
           minW="48"
         >
           Transfer
