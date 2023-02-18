@@ -102,7 +102,7 @@ Documents such as Government IDs are being encrypted and being stored on IPFS wi
 ## 🔗 **Links :**
 
 Contract - [0x5666C1dB8f1830ADFc126203984dF93F48a0eEd9](https://hyperspace.filfox.info/en/address/0x5666C1dB8f1830ADFc126203984dF93F48a0eEd9) (Filcoin Hyperspace Testnet)  
-Website - [Link](https://krishi-block-beb042.spheron.app)
+Website - [Link](https://krishiblock-ethforall.vercel.app/)
 
 ## ⚙️ **Installation :**
 
