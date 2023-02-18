@@ -65,6 +65,8 @@ const Auth: NextPage = () => {
           </Button> */}
 					<Button
 						onClick={handleSubmit((formData) => {
+							console.log(formData);
+							
 							setData(formData);
 							confirmOnOpen();
 						})}
