@@ -109,7 +109,7 @@ const Auth: NextPage = () => {
 					type="file"
 				/>
 				<FormField
-					name="document"
+					name="Phone No."
 					errorsObj={errors.name}
 					register={register}
 				/>

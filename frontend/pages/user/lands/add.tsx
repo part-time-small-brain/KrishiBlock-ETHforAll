@@ -55,7 +55,7 @@ const Auth: NextPage = () => {
 					register={register}
 				/>
 				<FormField
-					name="document"
+					name="land type"
 					errorsObj={errors.document}
 					register={register}
 				/>

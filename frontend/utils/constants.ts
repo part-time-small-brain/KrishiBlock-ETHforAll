@@ -1,3 +1,3 @@
 export const DEV = process.env.NODE_ENV === 'development';
 
-export const contractAddress = '0xc5596F970A08f1172212E8c341e08A947c1809d5';
+export const contractAddress = '0x5666C1dB8f1830ADFc126203984dF93F48a0eEd9';
