@@ -1,45 +1,27 @@
-import {
-  VStack,
-  Box,
-  Flex,
-  HStack,
-  Button,
-  Text,
-  Image,
-  BoxProps,
-} from "@chakra-ui/react";
+import { VStack, Flex, Button, Text } from "@chakra-ui/react";
 import { FC } from "react";
 
-const Card: FC<Partial<Land> & { openModal: (x: Partial<Land>) => void }> = ({
-  area = 2500,
-  unit = "sq.ft",
-  address = "Sant Nagar, Burari, Delhi",
-  onSale = false,
-  image = "https://placekitten.com/600/800",
-  openModal,
-}) => {
-  return (
-    <VStack w={"80"} minH={"48"} p={4} py={8} rounded="xl">
-      <Box position={"relative"} w="full">
-        <Image
-          alt="Property"
+const Card: FC<
+  { land: Partial<Land> } & { openModal: (x: Partial<Land>) => void }
+> = ({ land, openModal }) => {
+  if (!!land)
+    return (
+      <VStack w={"80"} minH={"48"} p={4} py={8} rounded="xl">
+        <Flex display={"inline-flex"} alignItems="center" gap={2}>
+          <Text fontSize={"7xl"}>{JSON.parse(land.id as any)}</Text>
+          <Text fontSize={"xl"}>{JSON.parse(land.area as any)} Sq.Ft</Text>
+        </Flex>
+        <Text textTransform={"capitalize"}>{land.address}</Text>
+        <Button
+          variant={"solid"}
           w="full"
-          h={32}
-          objectFit="cover"
-          src={image}
-          rounded={"xl"}
-        />
-      </Box>
-      <Flex display={"inline-flex"} alignItems="center" gap={2}>
-        <Text fontSize={"xl"}>{area}</Text>
-        <Text>{unit}</Text>
-      </Flex>
-      <Text textTransform={"capitalize"}>{address}</Text>
-      <Button variant={"solid"} onClick={() => openModal({area, unit, address})}>
-        View Details
-      </Button>
-    </VStack>
-  );
+          onClick={() => openModal({ area: JSON.parse(land.area as any), address: land.address, id: JSON.parse(land.id as any) })}
+        >
+          View Details
+        </Button>
+      </VStack>
+    );
+  return null;
 };
 
 export default Card;

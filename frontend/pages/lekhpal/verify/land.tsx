@@ -27,19 +27,10 @@ import { NextPage } from "next";
 import { FC, useState } from "react";
 
 import useWeb3Store from "../../../utils/web3store";
-const Entries: Array<Partial<Land>> = [
-  {
-    address: "Sant Nagar Burari",
-    area: 300000,
-    verified: false,
-    owner: "23423424",
-    id: 1,
-  },
-];
 
 const VerifyLand: NextPage = () => {
   const { onOpen, isOpen, onClose } = useDisclosure();
-  const [users, setUsers] = useState<Array<any>>([]);
+  const [lands, setLands] = useState<Array<any>>([]);
   const [activeId, setActiveId] = useState<number>();
   const [land, setLand] = useState({
     id: 0,
@@ -63,7 +54,16 @@ const VerifyLand: NextPage = () => {
     },
     {
       onSuccess: (data) => {
-        setUsers([...data]);
+        console.log({ data });
+        setLands(
+          data.map((land: any) => {
+            const nice = parseInt(JSON.parse(land));
+            if (nice != 0) {
+              return nice;
+            }
+            return null;
+          }).filter((land: any) => land != null)
+        );
       },
       onError: (err) => {
         toast({
@@ -84,7 +84,7 @@ const VerifyLand: NextPage = () => {
     {
       onSuccess: (data) => {
         console.log(data);
-        
+
         setLand(data);
         onOpen();
       },
@@ -133,7 +133,7 @@ const VerifyLand: NextPage = () => {
   if (query.isLoading) {
     return <Box p={8}>Loading Unverified Lands...</Box>;
   }
-  if (users.length === 0) return <Box p={8}>No Unverified Lands :)</Box>;
+  if (lands.length === 0) return <Box p={8}>No Unverified Lands :)</Box>;
 
   return (
     <>
@@ -146,7 +146,7 @@ const VerifyLand: NextPage = () => {
             </Tr>
           </Thead>
           <Tbody>
-            {users.map((id) => {
+            {lands.map((id) => {
               return (
                 <Tr key={id}>
                   <Td>{id}</Td>
@@ -214,20 +214,6 @@ export const VerifyLandModal: FC<{
   loading: boolean;
   data: any;
 }> = ({ isOpen, onClose, callback, loading, data }) => {
-  const toast = useToast();
-  const contract = useWeb3Store((state) => state.contract);
-  const [land, setLand] = useState({
-    id: 0,
-    area: 0,
-    landAddress: "",
-    ownerAddress: "",
-    landPrice: "",
-    propertyPID: "",
-    physicalSurveyNumber: "",
-    document: "",
-    isLandVerified: false,
-  });
-
   return (
     <>
       <Modal isOpen={isOpen} onClose={onClose} isCentered>
@@ -237,10 +223,10 @@ export const VerifyLandModal: FC<{
           <ModalCloseButton />
           <ModalBody fontWeight={"bold"}>
             <Text mb="1rem">Verify Land {JSON.parse(data.id)}</Text>
-            <Text mb="1rem">OwnerAddress: {(data.ownerAddress)}</Text>
-            <Text mb="1rem">Price: {JSON.parse(data.landPrice)}</Text>
-            <Text mb="1rem">Price: {JSON.parse(data.landPrice)}</Text>
-            <Text mb="1rem">PID: {JSON.parse(data.propertyPID)}</Text>
+            <Text mb="1rem">OwnerAddress: {data.ownerAddress}</Text>
+            {/* <Text mb="1rem">Price: {JSON.parse(data.landPrice)}</Text> */}
+            {/* <Text mb="1rem">Price: {JSON.parse(data.landPrice)}</Text> */}
+            {/* <Text mb="1rem">PID: {JSON.parse(data.propertyPID)}</Text> */}
           </ModalBody>
 
           <ModalFooter>
@@ -249,7 +235,7 @@ export const VerifyLandModal: FC<{
               onClick={callback}
               rounded={"full"}
               isLoading={loading}
-              loadingText="Verifying User"
+              loadingText="Verifying Land"
             >
               Confirm
             </Button>

@@ -21,7 +21,7 @@ RoleLinks.set("3", [
   },
   {
     href: "/sdm/change",
-    name: "Change SDM",
+    name: "Handover",
     description: "Change the current SDM",
   },
 ]);

@@ -46,7 +46,7 @@ export default function ViewDetail({
                 <VStack alignItems={"start"}>
                   <Flex gap={4} alignItems={"center"}>
                     <Text fontWeight={"bold"} fontSize="3xl">
-                      Land {"12"}
+                      Land {data.id}
                     </Text>
                     <Tooltip label="verified by lekhpal" placement="right">
                       <Box
@@ -75,7 +75,7 @@ export default function ViewDetail({
                     </Tooltip>
                   </Flex>
                   <Text fontWeight={"bold"} fontSize="3xl">
-                    {data.area} {data.unit}
+                    {data.area} Sq.Ft
                   </Text>
                   <Text fontWeight={"bold"} fontSize="xl">
                     {data.address?.slice(0, 23)}

@@ -32,7 +32,7 @@ const Home: NextPage = () => {
       <Divider my={4} />
       <VStack alignItems={"start"} gap={2}>
         <Text display={"inline-flex"} gap={2} w="full" fontSize={"2xl"}>
-          {query.data?.name}, {JSON.parse(query.data?.age)}{" "}
+          {query.data?.name}, {query.data && JSON.parse(query.data?.age)}{" "}
           {query.data.isUserVerified ? (
             <Box color={"twitter.300"}>
               <Tooltip label="verified" placement="right">

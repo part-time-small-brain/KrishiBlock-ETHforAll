@@ -18,7 +18,7 @@ const Auth: NextPage = () => {
   } = useForm();
   const [data, setData] = useState<any>();
   return (
-    <Box p={8}>
+    <Box>
       <VStack spacing={4} maxW="container.md" fontSize={"sm"}>
         <FormField
           name="address"
