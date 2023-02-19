@@ -24,7 +24,7 @@ Note - These wallets are just for testing
 
 *The contracts have been deployed using FEVM on the filecoin hyperspace testnet.  
 Documents such as Government IDs are being encrypted and being stored on IPFS with the use of @Lighthouse for perpetual storage.  
-@Spheron for web hosting and on the go development.*
+@Superfluid has been used to implement a rent payment feature.*
 
 
 ## 💻 **Screenshots :**
@@ -103,6 +103,8 @@ Documents such as Government IDs are being encrypted and being stored on IPFS wi
 
 Contract - [0x5666C1dB8f1830ADFc126203984dF93F48a0eEd9](https://hyperspace.filfox.info/en/address/0x5666C1dB8f1830ADFc126203984dF93F48a0eEd9) (Filcoin Hyperspace Testnet)  
 Website - [Link](https://krishiblock-ethforall.vercel.app/)
+Arcana Auth - [Link](https://arcana-krishiblock.vercel.app/)
+Superfluid Rent Payment - [Link](https://krishiblock-superfluid-rent.vercel.app/)
 
 ## ⚙️ **Installation :**
 
