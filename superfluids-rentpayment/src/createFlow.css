@@ -1,0 +1,57 @@
+.description {
+  margin-top: 3%;
+}
+
+.head {
+  margin-top: 40px;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.mb-3 {
+  margin-left: 3%;
+  margin-right: 3%;
+}
+
+.calculation {
+  border: 2px solid #fbf189;
+  padding: 2.5%;
+  margin-left: 5%;
+  margin-right: 5%;
+  margin-top: 2.5%;
+}
+
+.connectedWallet {
+  background-color: #198754;
+  color: #1b212c;
+  font-family: "Josefin Sans", "sans-serif";
+  margin-left: 40%;
+  font-weight: 600;
+  margin-right: 40%;
+  margin-bottom: 40px;
+}
+
+#connectWallet {
+  background-color: #fbf189;
+  color: #1b212c;
+  margin-top: 0%;
+  margin-left: 40%;
+  margin-right: 40%;
+  margin-bottom: 40px;
+}
+
+.paybtn {
+  background-color: #fbf189;
+  color: #1b212c;
+  font-family: "Josefin Sans", "sans-serif";
+  font-weight: 600;
+  margin-top: 20px;
+  margin-right: 20px;
+  margin-left: 20px;
+}
+
+.form {
+  border: 1% solid #ededee;
+  background-color: #1b212c;
+  color: #ededee;
+}
