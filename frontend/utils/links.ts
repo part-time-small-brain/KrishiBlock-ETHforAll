@@ -91,6 +91,11 @@ RoleLinks.set('4', [
     verificationRequired: true,
     description: 'Add a new land for the current user',
   },
+  {
+    href: 'https://krishiblock-superfluid-rent.vercel.app/',
+    name: 'Pay Rent',
+    description: 'Superfluid integration',
+  },
 ]);
 
 export default RoleLinks;
