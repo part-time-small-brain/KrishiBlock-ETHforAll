@@ -99,6 +99,11 @@ Note - These wallets are just for testing
 <a><img height="220rem" src="https://i.imgur.com/nGopdyk.png"/></a>
 </p>
 
+### Rent Payment :
+<p>
+<a><img height="220rem" src="https://i.imgur.com/R1L68fk.png"/></a>
+</p>
+
 ### Project FlowChart :
 <p>
 <a><img height="600rem" src="https://user-images.githubusercontent.com/75518572/209988095-5e44f1c5-6c58-4293-882c-408500ef7c7e.png"/></a>
