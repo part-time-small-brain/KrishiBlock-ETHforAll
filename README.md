@@ -11,6 +11,17 @@ KrishiBlock incorporates the hierarchy that the government already has in place,
 SDM (Sub-divisional magistrate) -> Tehsildar (Revenue Officer) -> Lekhpal (Village accountant) -> User
 ```
 
+## 🔗 **Links :**
+
+*The contracts have been deployed using FEVM on the filecoin hyperspace testnet.  
+Documents such as Government IDs are being encrypted and being stored on IPFS with the use of @Lighthouse for perpetual storage.  
+@Superfluid has been used to implement a rent payment feature.*
+
+Contract - [0x5666C1dB8f1830ADFc126203984dF93F48a0eEd9](https://hyperspace.filfox.info/en/address/0x5666C1dB8f1830ADFc126203984dF93F48a0eEd9) (Filcoin Hyperspace Testnet)  
+Website - [Link](https://krishiblock-ethforall.vercel.app/)  
+Arcana Auth - [Link](https://arcana-krishiblock.vercel.app/)  
+Superfluid Rent Payment (Accessibile through User page) - [Link](https://krishiblock-superfluid-rent.vercel.app/)  
+
 ## 🔑 **Keys and Details :**
 ```
 Admin [SDM/Tehsildar/Lekhpal]  
@@ -21,11 +32,6 @@ Private Key - e21774c6f321b41c847a7e612c5156d3e70d2df7ecf673e39d59f2cdf00998e5
 
 Note - These wallets are just for testing
 ```
-
-*The contracts have been deployed using FEVM on the filecoin hyperspace testnet.  
-Documents such as Government IDs are being encrypted and being stored on IPFS with the use of @Lighthouse for perpetual storage.  
-@Superfluid has been used to implement a rent payment feature.*
-
 
 ## 💻 **Screenshots :**
 
@@ -98,13 +104,6 @@ Documents such as Government IDs are being encrypted and being stored on IPFS wi
 <a><img height="600rem" src="https://user-images.githubusercontent.com/75518572/209988095-5e44f1c5-6c58-4293-882c-408500ef7c7e.png"/></a>
 </p>
 
-
-## 🔗 **Links :**
-
-Contract - [0x5666C1dB8f1830ADFc126203984dF93F48a0eEd9](https://hyperspace.filfox.info/en/address/0x5666C1dB8f1830ADFc126203984dF93F48a0eEd9) (Filcoin Hyperspace Testnet)  
-Website - [Link](https://krishiblock-ethforall.vercel.app/)  
-Arcana Auth - [Link](https://arcana-krishiblock.vercel.app/)  
-Superfluid Rent Payment - [Link](https://krishiblock-superfluid-rent.vercel.app/)  
 
 ## ⚙️ **Installation :**
 
